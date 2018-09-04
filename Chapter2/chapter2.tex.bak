@@ -1,0 +1,219 @@
+%!TEX root = ../thesis.tex
+%*******************************************************************************
+%****************************** Second Chapter *********************************
+%*******************************************************************************
+
+\chapter{Related research}
+
+\ifpdf
+    \graphicspath{{Chapter2/Figs/Raster/}{Chapter2/Figs/PDF/}{Chapter2/Figs/}}
+\else
+    \graphicspath{{Chapter2/Figs/Vector/}{Chapter2/Figs/}}
+\fi
+
+
+\section[Introduction]{Introduction}
+
+\section[Biometrics]{Biometrics}
+
+\section[Cancelability]{Cancelability}
+With the use of authentication systems becoming more prevalent, a primary concern becomes real-time processing of transmitted information as to verify a user’s identity. The authentication process itself within traditional systems has evolved and often resorts to biometric information rather than passwords, tokens and/or secret keys [3]. This is primarily due to the inability of these traditional schemes to differentiate between an authentic user and an impostor. By authenticating users using biometric information the privacy of biometric data becomes important. Should attackers manage to gain access to the recognition system and its underlying data; the user-specific biometric information becomes readily available for identity theft. The biometric information should be protected. A possible solution would be to use multifactor biometric authentication with two or more biometric traits being employed. However, by adding more biometric features it will only add to the possible losses (should the system be compromised). Within the information security industry, one of the long acclaimed benefits of using biometric authentication has been that with post-enrolment biometric templates, user-specific biometric information (matching the stored template) could not be reconstructed [2]. The benefit was refuted and once biometric templates become compromised, the biometric template is rendered useless. This is because unlike passwords, biometric templates cannot simply be re-assigned due to their personal unique nature. Considering the susceptibility of such biometric authentication systems an approach to enhance the robustness can be used that is known as cancelable biometrics (CB). This approach improves upon standard encryption algorithms that expose biometric templates during the authentication attempt by not supporting the comparison of templates within the encrypted domain [2]. Simply put, the encrypted domain referred to by CB ensures that data will remain secure in transit and in storage. Furthermore, CB allows for re-issuing and/or regenerating biometric information with a unique and independent identity. The process of transforming or repeatedly distorting the biometric feature using transform parameters that are predetermined rather than using the original biometric achieves this [1]. As to meet some of the major requirements regarding biometric information protection, biometric cryptosystems (BCS) and cancelable biometrics (CB) are designed so that biometric features are [2][3]:
+
+\begin{enumerate}[label=\roman*.]
+	\item Diverse – Unable to be applied in multiple applications;
+	\item Reusable – Reused/replaced in the event of compromise; and
+	\item Irreversible – Computationally challenging to reconstruct the original biometric template, but simultaneously rudimentary to generate the protected biometric template.
+\end{enumerate}
+
+Various approaches may be adopted when considering an implementation schema for biometric systems. However, one must consider the alternatives to an approach as to ensure that the chosen method is feasible. Thus, both BCS and CB are presented in order to gain an objective viewpoint. 
+BCSs are systems designed so that digital keys can be directly bound to a particular biometric [2]. One BCS approach is relevant to this particular study, namely biohashing which implements a biometric key-generation. 
+However, Rathgeb and Uhl [2] state that an implementation should not exist that directly generates keys from biometric templates. They elaborate that biometric features cannot provide sufficient information to reliably obtain lengthy and renewable keys without relying on helper data. Helper data is public information that is used within the key generation/retrieval process in a BCS [2].  This is useful to the study because helper data can be used to transform and obscure biometric information. Another approach to BCS is a biometric key-bind cryptosystem. This involves a secret key that relates to a biometric model by using helper data. To successfully implement this approach, facts regarding both the biometric model and the secret key may not be disclosed [5]. 
+According to [2][6], implementation of key-binding cryptosystems can occur through a fuzzy commitment and a fuzzy vault. The concept of fuzzy incorporates the generation of helper data extracted from biometric features using a secrecy key. The abovementioned helper data, combined with the secrecy key are then both encrypted and stored in the database. In order to authenticate a user, the helper data then uses the model and biometric features to rebuild the key [5]. A structural representation of this method can be seen below in Figure 1.
+ 
+Figure 1 : System structure for biometric authentication
+Initially, the sensor extracts the specific biometric features from the user (post-enrolment). Once the features have been extracted from the users’ hand, the current information within the system is then matched to that of the template that is stored within the database. However, during enrolment of the user in a BCS, the template that was created for each user undergoes a protection process that transforms the template into a secure template. The abovementioned template protection process includes the binarisation of the extracted biometric features. Once the binary template is created, the template is then further processed by the cryptosystem to ultimately generate the secure template. This means that each time the user attempts to be authenticated, the extracted features use the helper data to rebuild the key and match the generated template to the secure template. Finally, if the templates match then the result will be positive and the user will gain access. 
+Having considered a BCS, one needs to weigh up the options regarding the possible approaches to cancelability and implementations thereof. Cancelability, too, has the sole purpose of ensuring computational challenges when attempting to retrieve/recover the original biometric data by a 3rd party [2]. The focal point regarding cancelability remains that biometric characteristics should remain innately robust so that even when transform parameters are applied the biometric features do not lose value/individuality. Among individuality, by transforming biometrics one should ensure tolerance to intra-class variance so that the False Rejection Rate (FRR) is not too high. The most important feature that cancelability has to offer is unlinkability. This ensures that multiple transformed templates do not reveal any information relating to the original biometrics. In the unlikely event (assuming successful implementation) of data compromise, the transform parameters are simply altered which simultaneously implies biometric template updates. 
+With regards to transforms within a CB implementation, two categories remain forthcoming, namely [2]:   
+
+\begin{enumerate}[label=\roman*.]
+	\item Non-invertible transforms; and
+	\item Biometric salting.
+\end{enumerate}
+
+The abovementioned approaches differ in performance, accuracy and security. Depending on the system that is to be implemented, a weighted feasibility analysis should be conducted on those particular factors in order to select the most suitable approach. These approaches are briefly discussed below.
+\begin{enumerate}[label=\roman*.]
+
+	\item Non-invertible transforms \\
+	This approach involves the use of a non-invertible function that is applied to the biometric template. By applying this function, stored templates can be updated when transform parameters are modified [2][7]. Therefore, security is increased due to the inability to reconstruct the biometric data even though transforms may have been compromised. With this advantage comes an equal and opposite disadvantage. A loss of accuracy and a performance decrease is the disadvantageous result thereof. This is due to transformed biometric templates becoming laborious in comparison processing, which ultimately provides fewer biometric results to process during matching (thus, influencing the accuracy thereof).
+	
+	\item Biometric salting \\
+	Biometric salting commonly involves biometric template transforms that are preferred invertible as opposed to the non-invertible approach (abovementioned). The term “salting” refers to the act of merging specific data (such as passwords) with unique random values (“salt”) in order to make all of the original data distinct [8]. In this particular context, this technique may be applicable when a 4-digit PIN is used as the salt to be combined with the hand geometry vector prior to hashing the combination of data. This means that regardless of what biometric feature vector is chosen, the biometric template extraction cannot be reconstructed to the original biometric template [2][6]. This commands that transform parameters have to remain private. Variations of the approach may appear if user-specific transforms are applied. However, this demands that each authentication attempt requires transform parameters which may result in discrepancies if attackers successfully attain transform parameters. Ultimately, a decrease in performance is likely if the system implementation does not contain efficient biometric algorithms with high accuracy regarding private transform parameters. In contrast to non-invertible transforms, this approach maintains high recognition performance, however, the latter excels in terms of security [2][9].
+\end{enumerate}
+
+According to Rathgeb and Uhl [2], even though it seems to be common to adopt non-invertible approaches to system implementation schemes, biometric salting seems superior. Not only does biometric salting increase performance, but in user-specific transform applications by incorporating two-factor authentication one can improve both security and accuracy. 
+To conclude this subsection, the aim is to combine the key-binding capabilities of a BCS with the biometric salting of CB. Once the user-specific biometric information has been transformed and is secure, it is ready for storage. In order to store this sensitive biometric information, rather than using a conventional database (due to its vulnerabilities, i.e. username/password exploits) a technique known as steganography was utilized. 
+
+\section[Steganography]{Steganography}
+According to Kishor et al. [10], secret information is hidden using a type of communication, known as steganography. This is done through the use of multimedia files in cohesion with secret keys to embed information within these multimedia files. Steganography came about when it was realized that cryptography itself was incapable to securely transmit various forms of information across the internet [11]. The word steganography can be translated from Greek into “covered writing” [12]. When hiding sensitive information, the information in question is typically concealed using an alternative format to that of its original. This is done through regeneration of data using multimedia formats. Some of these formats include text, image, audio and even video. For the purposes of this particular study, focus will be maintained upon image steganography and the shrouding of sensitive biometric information by means of bit encryption within the cover object (image). While cryptography disguises only the meaning of a message using code, steganography aims to hide the entire message from possible attackers [10][13].
+The conventional flow of image steganography (as seen in Figure 2) follows a combination of encryption and decryption (just as cryptography does), but aims to use a confidential communication channel while secretly storing data and protecting the alteration of that data. An application that also makes this technique crucial to this particular study is the use of steganography as a conventional database alternative [12].
+  
+Figure 2 : Conventional image steganography flow
+
+In image steganography, both the encryption process and the decryption process involve the use of a cover image and a stego-image. In short, the difference between the two is merely that the stego-image contains the sensitive information, while the cover image can be seen as an empty data storage location for the sensitive information. In Figure 2, the steganography process requires sensitive information that is to be stored within the cover media (in this case, the image). This sensitive information is embedded into the image during the embedding process with the use of a secret key and a cover image to hide the information in. With the embedded information, the image is then referred to as the “stego-image.” The sensitive information can then only be extracted if the secret key is known.  
+Steganography can be implemented in various ways. However, the two major techniques that will be discussed regarding image steganography involve the following [13] [4]:
+\begin{enumerate}[label=\roman*.]
+	\item Spatial domain technique; and 
+	\item Transform domain technique.
+\end{enumerate}
+
+The main difference between the two techniques is that when implementing a spatial domain steganography, the pixels within the image are directly manipulated. This is juxtaposed to the transform domain steganography that uses distinct transformations to allow image transformation in the transform domain and then only is the sensitive information stored with the image[13][14].
+To broaden the scope of steganography even more, literature states that spatial and transform domain techniques branch out into subcategories of implementation [3][8][9]. A few examples of these methods can be seen in the Table 1.
+
+\begin{table}[h!]
+\caption{Steganography methods}
+\centering
+ \begin{tabular}{|p{0.45\textwidth} | p{0.45\textwidth}|} 
+ \hline
+	\textbf{Spatial Domain} & \textbf{Transform Domain} \\ [1ex] 
+ \hline\hline 
+ Least Significant Bit (LSB) substitution & Discrete Cosine Transform (DCT) \\[1ex]
+ \hline 
+ Pixel Value Differencing (PVD) & Discrete Wavelet Transform (DWT) \\[1ex]
+ \hline
+ Random pixel selection & Discrete Fourier Transform (DFT) \\ [1ex] 
+ \hline
+ \end{tabular}
+\end{table}
+
+
+The purpose of modern steganography is to allow the host image protection so that the image itself, as well as the sensitive data it holds may not be recovered from the stego-image. By achieving this, the technique implemented is classified as irreversible steganography. The aforementioned objective is typically partnered with the ability to conceal sensitive information in a natural image in such a way that distortion of that image is minimal.
+
+It is important to maintain that this particular study focusses on cancelable biometrics being stored using steganography techniques. This implies that the image may be distorted because even if an attacker manages to access the stego-image, he/she should not know what type of information is being stored, nor how to recover to biometrics after the transforms. 
+
+According to [11][13], steganography techniques are evaluated using various criteria. However, evaluation criteria that is relevant to this particular study are the following:
+\begin{enumerate}[label=\roman*.]
+	
+	\item Hiding capacity – This is the maximum amount of data that can be stored within an image with reference to bits per pixel (bpp). Comparatively speaking, a larger hiding capacity means the steganography technique is better.
+	
+	\item Security Analysis – The technique should be able to withstand attacks to the image that include any attempt to alter the image.
+	
+	\item Robustness – By being robust against attempts to attack the image statistically, as well as image manipulation attacks, the technique alone provides protection to the sensitive information hidden within the image. 
+	
+	\item Computational complexity – With an algorithmic implementation, it is always important to take into consideration the time and space complexity.	
+\end{enumerate}
+	
+An image can be seen as a two-dimensional function, where the F(x, y) is the image pixels that can be represented as a grid. Each pixel contains ARGB (Alpha-Red-Green-Blue) values. Alpha values represent the pixel’s opacity and RGB values represent a particular colour within the colour system. These ARGB values range from (0, 0, 0, 0) to (255, 255, 255, 255). To embed data, one can either store information sequentially or randomly among various image pixels using the F(x, y) grid layout. By using sequential embedding of data one makes the data more susceptible to steganalysis detection by clustering the sensitive information within the image grid [15]. Randomly embedding data complicates the detection process by scattering the data using a random number sequence. The proposed system aims to use steganography techniques in the storage and obscuring of sensitive biometric information within a(n) image(s) once the biometric information has been transformed using CB techniques. In the next subsection, the means by which biometric information will be extracted using an LMC as the biometric scanner will be discussed.
+
+\section[Leap motion controller (LMC)]{Leap motion controller (LMC)}
+With the LMC’s advanced hand and finger tracking capabilities, the position, velocity and orientation of all ten fingers, supplemented by hand geometry information, are reported upon with accuracy and reduced latency [8]. Chan et al. [2] presented the implementation of an LMC to assume the role of a biometric authentication device by harnessing the abovementioned information. The low-cost factor of this device makes this implementation even more favorable in situations where cost is of substantial concern. One drawback of this approach is that the LMC is a peripheral device that still requires a computer system to connect it to as the device cannot function in a stand-alone way. This disadvantage will add to the associated cost of implementation. 
+The LMC is able to scan a human hand at approximately 100 frames per second (FPS). With the use of an LMC it is possible to extract all finger/bone measurements of any given hand during a scan. Any given combination of these measurements should be unique to every person [16]. The infrared scanner is then able to capture metrics relating to the hand and/or bones within the hand. As seen in Figure 3, a model of the hand is then created based on the readings taken by the LMC.
+  
+Figure 3 : Example of LMC generated hand model
+Information retrieved from the hand scans can be seen in Table 2. The LMC is capable of acquiring numerous metrics relating to any presented hand. A combination of Figure 3 and Table 2 provides an overview of the metrics that are relevant to the proposed system. It must be stated that i-iv can be further explained as the acquired lengths and widths of each of these bones.
+Table 2 : Relevant LMC readings
+	Readings		Bone
+1.	Left/Right (Hand)	(i)	Metacarpal
+2.	Palm Width (Hand)	(ii)	Proximal
+3.	Length (Fingers)	(iii)	Intermediate
+4.	Width (Fingers)	(iv)	Distal
+
+All of the above information becomes relevant when attempting to authenticate users based on their hand-geometry. Although the LMC maintains great accuracy when gathering information regarding to the presented hand, the readings tend to differ depending on the position of the hand in relation to the LMC device itself. The readings show minimal discrepancy; however, this could become an issue when statistically analysing the FAR/FRR (False-Acceptance-Rate/False-Rejection-Rate) of the final authentication system [17]. 
+While scanning the hand using an LMC one can vary the length of the scans to acquire a larger data set for each user reading during the enrolment and storage phase. This allows for the system to iterate through the hand and its 19 bones (three bones per finger, except for the intermediate bone which is non-existent in the thumb) within the fingers and retrieve the lengths of each of those bones. 
+With the use of an LMC, features can be extracted from presented hands, transformed to implement CB and stored using steganography techniques. A proposed framework to implement such a system is discussed in the following section.
+
+\section[Short title]{Conclusion}
+\section[Short title]{Chapter summary}
+% Uncomment this line, when you have siunitx package loaded.
+%The SI Units for dynamic viscosity is \si{\newton\second\per\metre\squared}.
+I'm going to randomly include a picture Figure~\ref{fig:minion}.
+
+
+If you have trouble viewing this document contact Krishna at: \href{mailto:kks32@cam.ac.uk}{kks32@cam.ac.uk} or raise an issue at \url{https://github.com/kks32/phd-thesis-template/}
+
+
+\begin{figure}[htbp!] 
+\centering    
+\includegraphics[width=1.0\textwidth]{minion}
+\caption[Minion]{This is just a long figure caption for the minion in Despicable Me from Pixar}
+\label{fig:minion}
+\end{figure}
+
+
+\section*{Enumeration}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae laoreet lectus. Donec lacus quam, malesuada ut erat vel, consectetur eleifend tellus. Aliquam non feugiat lacus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque a dolor sit amet dui malesuada malesuada id ac metus. Phasellus posuere egestas mauris, sed porta arcu vulputate ut. Donec arcu erat, ultrices et nisl ut, ultricies facilisis urna. Quisque iaculis, lorem non maximus pretium, dui eros auctor quam, sed sodales libero felis vel orci. Aliquam neque nunc, elementum id accumsan eu, varius eu enim. Aliquam blandit ante et ligula tempor pharetra. Donec molestie porttitor commodo. Integer rutrum turpis ac erat tristique cursus. Sed venenatis urna vel tempus venenatis. Nam eu rhoncus eros, et condimentum elit. Quisque risus turpis, aliquam eget euismod id, gravida in odio. Nunc elementum nibh risus, ut faucibus mauris molestie eu.
+ Vivamus quis nunc nec nisl vulputate fringilla. Duis tempus libero ac justo laoreet tincidunt. Fusce sagittis gravida magna, pharetra venenatis mauris semper at. Nullam eleifend felis a elementum sagittis. In vel turpis eu metus euismod tempus eget sit amet tortor. Donec eu rhoncus libero, quis iaculis lectus. Aliquam erat volutpat. Proin id ullamcorper tortor. Fusce vestibulum a enim non volutpat. Nam ut interdum nulla. Proin lacinia felis malesuada arcu aliquet fringilla. Aliquam condimentum, tellus eget maximus porttitor, quam sem luctus massa, eu fermentum arcu diam ac massa. Praesent ut quam id leo molestie rhoncus. Praesent nec odio eget turpis bibendum eleifend non sit amet mi. Curabitur placerat finibus velit, eu ultricies risus imperdiet ut. Suspendisse lorem orci, luctus porta eros a, commodo maximus nisi.
+
+Nunc et dolor diam. Phasellus eu justo vitae diam vehicula tristique. Vestibulum vulputate cursus turpis nec commodo. Etiam elementum sit amet erat et pellentesque. In eu augue sed tortor mollis tincidunt. Mauris eros dui, sagittis vestibulum vestibulum vitae, molestie a velit. Donec non felis ut velit aliquam convallis sit amet sit amet velit. Aliquam vulputate, elit in lacinia lacinia, odio lacus consectetur quam, sit amet facilisis mi justo id magna. Curabitur aliquet pulvinar eros. Cras metus enim, tristique ut magna a, interdum egestas nibh. Aenean lorem odio, varius a sollicitudin non, cursus a odio. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; 
+\begin{enumerate}
+\item The first topic is dull
+\item The second topic is duller
+\begin{enumerate}
+\item The first subtopic is silly
+\item The second subtopic is stupid
+\end{enumerate}
+\item The third topic is the dullest
+\end{enumerate}
+Morbi bibendum est aliquam, hendrerit dolor ac, pretium sem. Nunc molestie, dui in euismod finibus, nunc enim viverra enim, eu mattis mi metus id libero. Cras sed accumsan justo, ut volutpat ipsum. Nam faucibus auctor molestie. Morbi sit amet eros a justo pretium aliquet. Maecenas tempor risus sit amet tincidunt tincidunt. Curabitur dapibus gravida gravida. Vivamus porta ullamcorper nisi eu molestie. Ut pretium nisl eu facilisis tempor. Nulla rutrum tincidunt justo, id placerat lacus laoreet et. Sed cursus lobortis vehicula. Donec sed tortor et est cursus pellentesque sit amet sed velit. Proin efficitur posuere felis, porta auctor nunc. Etiam non porta risus. Pellentesque lacinia eros at ante iaculis, sed aliquet ipsum volutpat. Suspendisse potenti.
+
+Ut ultrices lectus sed sagittis varius. Nulla facilisi. Nullam tortor sem, placerat nec condimentum eu, tristique eget ex. Nullam pretium tellus ut nibh accumsan elementum. Aliquam posuere gravida tellus, id imperdiet nulla rutrum imperdiet. Nulla pretium ullamcorper quam, non iaculis orci consectetur eget. Curabitur non laoreet nisl. Maecenas lacinia, lorem vel tincidunt cursus, odio lorem aliquet est, gravida auctor arcu urna id enim. Morbi accumsan bibendum ipsum, ut maximus dui placerat vitae. Nullam pretium ac tortor nec venenatis. Nunc non aliquet neque. 
+
+\section*{Itemize}
+\begin{itemize}
+\item The first topic is dull
+\item The second topic is duller
+\begin{itemize}
+\item The first subtopic is silly
+\item The second subtopic is stupid
+\end{itemize}
+\item The third topic is the dullest
+\end{itemize}
+
+\section*{Description}
+\begin{description}
+\item[The first topic] is dull
+\item[The second topic] is duller
+\begin{description}
+\item[The first subtopic] is silly
+\item[The second subtopic] is stupid
+\end{description}
+\item[The third topic] is the dullest
+\end{description}
+
+
+\clearpage
+
+\tochide\section{Hidden section}
+\textbf{Lorem ipsum dolor sit amet}, \textit{consectetur adipiscing elit}. In magna nisi, aliquam id blandit id, congue ac est. Fusce porta consequat leo. Proin feugiat at felis vel consectetur. Ut tempus ipsum sit amet congue posuere. Nulla varius rutrum quam. Donec sed purus luctus, faucibus velit id, ultrices sapien. Cras diam purus, tincidunt eget tristique ut, egestas quis nulla. Curabitur vel iaculis lectus. Nunc nulla urna, ultrices et eleifend in, accumsan ut erat. In ut ante leo. Aenean a lacinia nisl, sit amet ullamcorper dolor. Maecenas blandit, tortor ut scelerisque congue, velit diam volutpat metus, sed vestibulum eros justo ut nulla. Etiam nec ipsum non enim luctus porta in in massa. Cras arcu urna, malesuada ut tellus ut, pellentesque mollis risus.Morbi vel tortor imperdiet arcu auctor mattis sit amet eu nisi. Nulla gravida urna vel nisl egestas varius. Aliquam posuere ante quis malesuada dignissim. Mauris ultrices tristique eros, a dignissim nisl iaculis nec. Praesent dapibus tincidunt mauris nec tempor. Curabitur et consequat nisi. Quisque viverra egestas risus, ut sodales enim blandit at. Mauris quis odio nulla. Cras euismod turpis magna, in facilisis diam congue non. Mauris faucibus nisl a orci dictum, et tempus mi cursus.
+
+Etiam elementum tristique lacus, sit amet eleifend nibh eleifend sed \footnote{My footnote goes blah blah blah! \dots}. Maecenas dapibu augue ut urna malesuada, non tempor nibh mollis. Donec sed sem sollicitudin, convallis velit aliquam, tincidunt diam. In eu venenatis lorem. Aliquam non augue porttitor tellus faucibus porta et nec ante. Proin sodales, libero vitae commodo sodales, dolor nisi cursus magna, non tincidunt ipsum nibh eget purus. Nam rutrum tincidunt arcu, tincidunt vulputate mi sagittis id. Proin et nisi nec orci tincidunt auctor et porta elit. Praesent eu dolor ac magna cursus euismod. Integer non dictum nunc.
+
+
+\begin{landscape}
+
+\section*{Subplots}
+I can cite Wall-E (see Fig.~\ref{fig:WallE}) and Minions in despicable me (Fig.~\ref{fig:Minnion}) or I can cite the whole figure as Fig.~\ref{fig:animations}
+
+
+\begin{figure}
+  \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{TomandJerry}
+    \caption{Tom and Jerry}
+    \label{fig:TomJerry}   
+  \end{subfigure}             
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{WallE}
+    \caption{Wall-E}
+    \label{fig:WallE}
+  \end{subfigure}             
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{minion}
+    \caption{Minions}
+    \label{fig:Minnion}
+  \end{subfigure}
+  \caption{Best Animations}
+  \label{fig:animations}
+\end{figure}
+
+
+\end{landscape}

@@ -1,0 +1,82 @@
+%!TEX root = ../thesis.tex
+%*******************************************************************************
+%****************************** Sixth Chapter **********************************
+%*******************************************************************************
+\chapter{Conclusion}
+
+% **************************** Define Graphics Path **************************
+
+\section{Introduction}
+
+Chapter 6 aims to conclude this study by presenting definitive remarks and comments. The aforementioned will be based on the research objectives that were made concrete during the initial stages and whether or not these objectives were realised throughout the study. The limitations that arose will also be discussed, as well as new opportunities that have become apparent upon completion.
+
+\section{Research objectives}
+
+In chapter 1, it was stated that in order to achieve the primary objective of this study, various secondary objectives would first need to be met. Thus, we will discuss these objectives first.
+
+\subsection{With the use of a literature review, discuss the use and implementation of cancelable biometrics, steganography, hand geometry authentication and the Leap Motion Controller.}
+
+To address this objective, chapter 2 involved thorough research into a multitude of seemingly disparate techniques and attempting to unify them to provide a holistic approach for an authentication system. The discussions regarding these techniques focussed on their individual characteristics and what the best practices were for implementing each of those techniques independently. It was realised during the discussions within the literature review that these techniques could, in theory, collectively produce a framework that achieves an authentication system.
+
+\subsection{Design and implementation of the system}
+
+Upon realisation that the collective techniques could produce an authentication system, the design and implementation of this proposed system would have to be laid out systematically. In chapter 3, the system design process was mapped out using the iterative and incremental approach which allowed us to materialise smaller “goals” or increments that we needed to implement in order to successfully create the proposed authentication system. These increments guided the development process and we ensured that the primary objective of this study was well aligned with the aforementioned increments. 
+
+The implementation process presented various challenges that were overcome due to the knowledge that was gained throughout the literature review and was well managed through the use of the iterative and incremental model. Throughout the entirety of chapter 3, the development of the system was discussed, highlighting the crucial algorithmic functions that were needed in order to meet the incremental authentication system capabilities. By meeting this secondary objective, the only objective remaining would be to thoroughly test the functionality of the system.
+
+
+\subsection{Evaluation of the created system using error-based metrics and iterative validation testing}
+
+In order to conclusively state that the proposed authentication system is fully functional, we would have to evaluate the system using error-based metrics and iterative validation testing. This testing would be conducted in a manner that extracts data from multiple users in an attempt to:
+
+\begin{enumerate}[label=\roman*.]
+    \item Enrol the user into the system; and
+    \item Successfully, accurately and efficiently authenticate the user.
+\end{enumerate}
+
+Once this data was collected during the testing and evaluation, a benchmark for the testing could be concluded in order to: 
+
+\begin{enumerate}[label=\roman*.]
+    \item Compare the efficiency and accuracy; and 
+    \item Security of the proposed system.
+\end{enumerate}
+
+Upon thorough analysis of the extracted data, the results were then discussed and it was found that even though the system lacked efficiency and could be optimized to authenticate users faster, it did so with a high success rate and a high accuracy rate.
+
+\subsection{Develop a technique that ensures cancelability if biometrics based on hand geometry information from an LMC and steganographic storage techniques.}
+
+The primary objective of this study was to develop a technique that ensures cancelability if biometrics based on hand geometry information from an LMC and steganographic storage techniques. As the abovementioned statement indicates, the proposed authentication system aimed to:
+
+\begin{enumerate}[label=\roman*.]
+    \item Extract biometric information (specifically hand geometry measurements) from users;
+    \item Ensure that these biometrics are made cancellable using various techniques to transform the biometric information prior to storage; 
+    \item Upon storing the cancellable biometrics, steganographic techniques will be used.
+\end{enumerate}
+
+Thus, it can be stated that all of the objectives, as described in chapter 1 and reiterated here, have been successfully addressed and achieved. In meeting these objectives, the possibilities surrounding affordable and secure authentications have surfaced. 
+
+\section{Limitations}
+
+With regards to the setup of the proposed framework, it must be stated that there were few limitations in terms of the actual development of the system due to the wide range of supported development platforms, languages and firmware. However, a limitation to the system remains that the LMC is a peripheral device and therefore requires a host to run on. The minimum system requirements for the system can be seen in Appendix C.
+When the testing of the system came about, another limitation occurred in terms of the number of participants during testing. Due to the number of willing and available members within the computer science faculty at the NWU Potchefstroom campus, the total number of participants was capped at forty. 
+Even though the LMC proved to be an effective an efficient biometric sensor, the use of hand geometry for the source of user biometric revealed the lack of uniqueness found in this approach. It might have been more useful to use a more distinctive biometric (such as fingerprints). However, with the reduced cost of using a peripheral device like the LMC, the limitations posed by this approach may also be seen as advantageous due to the ease of use and affordability.
+
+
+\section{Future research}
+
+The combination of techniques presented within this study are merely one approach that can be taken, and various other approaches may be taken to create an authentication system. Another possible approach that could be taken for future research may be to use fingerprints as the biometric source, along with an alternative CB approach, as well as, using steganography in a different way. The proposed system could open many possibilities into the manner within which cancelable biometrics are used within authentication systems.
+Further studies may also include the use of a larger data set to provide more detailed analysis regarding the cancelability and accuracy of the proposed framework.
+
+To improve the proposed framework, one could look at the vast number of opportunities that were revealed throughout the research process. Some of these opportunities involve: 
+
+
+\begin{enumerate}[label=\roman*.]
+    \item Improving the system performance by using more efficient search algorithms to match users faster;
+    \item Increasing the level of security provided through the steganographic techniques by applying a greater level of dynamic randomness during the enrolment and storage process; 
+    \item Using mathematically complex approaches to apply cancelability prior to the biometric storage and matching processes; and
+    \item The system can be upgraded to use cloud services for storing the stego-images rather than storing the information locally.
+\end{enumerate}
+
+\section{Chapter summary}
+
+Chapter 6 is the final chapter of this study and aimed to present a summary of the objectives that were presented in chapter 1 and how these objectives were approached and achieved. Therefore, the limitations that were realised throughout the study and the possibilities that arose upon completion thereof.
