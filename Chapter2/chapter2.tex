@@ -5,11 +5,11 @@
 
 \chapter{Related research}
 
-\ifpdf
-    \graphicspath{{Chapter2/Figs/Raster/}{Chapter2/Figs/PDF/}{Chapter2/Figs/}}
-\else
-    \graphicspath{{Chapter2/Figs/Vector/}{Chapter2/Figs/}}
-\fi
+% \ifpdf
+%     \graphicspath{{Chapter2/Figs/Raster/}{Chapter2/Figs/PDF/}{Chapter2/Figs/}}
+% \else
+%     \graphicspath{{Chapter2/Figs/Vector/}{Chapter2/Figs/}}
+% \fi
 
 
 \section[Introduction]{Introduction}
@@ -21,7 +21,7 @@ Within this chapter, an overview of the related topics will be given, followed b
 \section[Biometrics]{Biometrics}
 Biometrics have long been used as an accepted user authentication method and have been implemented as a security measure in many real-world systems including personal computers, mobile devices (cell phones and tablets), and also physical access control systems (Shahim et al., 2016:10–13).
 
-Biometrics are the digitalization and analysis of a person’s innate physical or biological characteristics and the use thereof to distinguish between persons that are to be afforded access to specific systems, information or physical areas (Rathgeb \& Uhl, 2011:1–25). By encoding a person’s physical attributes the disadvantages of traditional password based security, like passwords being lost or stolen, can be overcome (Verma \& Sinha, 2016). One of the factors that hampers the acceptance of biometric authentication systems is that the cost of the development and implementation has traditionally been high due to factors such as biometric hardware, computational processing power, infrastructure integration, user training, and research and testing (Verma \& Sinha, 2016). Furthermore, biometric systems present a unique challenge in terms of user privacy due to the personal nature of the biometric information that is stored in and used by the system (Paul \& Gavrilova, 2012:43–49).
+Biometrics are the digitalisation and analysis of a person’s innate physical or biological characteristics and the use thereof to distinguish between persons that are to be afforded access to specific systems, information or physical areas (Rathgeb \& Uhl, 2011:1–25). By encoding a person’s physical attributes the disadvantages of traditional password based security, like passwords being lost or stolen, can be overcome (Verma \& Sinha, 2016). One of the factors that hampers the acceptance of biometric authentication systems is that the cost of the development and implementation has traditionally been high due to factors such as biometric hardware, computational processing power, infrastructure integration, user training, and research and testing (Verma \& Sinha, 2016). Furthermore, biometric systems present a unique challenge in terms of user privacy due to the personal nature of the biometric information that is stored in and used by the system (Paul \& Gavrilova, 2012:43–49).
 
 The cost factor is one that decreases as continued development in the related hardware takes place. Alongside this development of dedicated biometric hardware there is an influx of new augmented computer interaction possibilities (i.e., new and non-traditional ways to control computers), a wide range of technological facets such as voice-, imaging- and movement control are receiving a lot of attention (Paul \& Gavrilova, 2012:43–49; Verma \& Sinha, 2016). Voice-control consists of verifying who the speaker is with the use of voice biometrics. This type of biometric has shown vast improvement recently and is often used to prove that low error-rates combined with high accuracy is achievable with its use. Image-control typically refers to facial recognition implementations, retina scanners and/or eye-tracking software that implement infrared imaging. In order to facilitate these interactions, the hardware is implicitly working with information that can be harnessed for biometric authentication. Hardware peripherals (like the leap motion controller (LMC)) that extend the basic functionality of computers to include support for voice and imaging facets are becoming more commonplace (Rathgeb \& Uhl, 2011). These peripherals are even used in biometrics research. For instance, Chan et al.(2015), use an LMC for hand scanning and biometric authentication whereby a user would be able to gain access to a system, physical area or information by having their hand geometry scanned and analysed. They also posit the use of an LMC in multifactor authentication systems in combination with traditional passwords and PIN approaches. 
 Typically, this type of biometric authentication process follows the protocol of matching prior biometric templates (i.e. digitally formatted biometric features) that are stored within a database to the biometrics that are presented to the system during the biometric scanning process. 
@@ -42,7 +42,7 @@ A possible solution would be to use multifactor biometric authentication with tw
 \end{enumerate}
 
 Various approaches may be adopted when considering an implementation schema for biometric systems. However, one must consider the alternatives to an approach as to ensure that the chosen method is feasible. Thus, both BCS and CB are presented in order to gain an objective understanding. 
-BCSs are systems designed so that digital keys can be directly bound to a particular biometric (Rathgeb \& Uhl, 2011:1–25). One BCS approach is relevant to this particular study, namely biohashing which implements biometric key-generation. However, Rathgeb and Uhl (Rathgeb \& Uhl, 2011:1–25) state that an implementation should not exist that directly generates keys from biometric templates. They elaborate that biometric features cannot provide sufficient information to reliably obtain lengthy and renewable keys without relying on helper data. Helper data is public information that is used within the key generation/retrieval process in a BCS (Rathgeb \& Uhl, 2011:1–25).  This is useful to the study because helper data can be used to transform and obscure biometric information. Another approach to BCS is a biometric key-bind cryptosystem. This involves a secret key that relates to a biometric model by using helper data. To successfully implement this approach, facts regarding both the biometric model and the secret key may not be disclosed (Eng \& Sadkhan, 2016). According to (Paul et al., 2014; Rathgeb \& Uhl, 2011), implementation of key-binding cryptosystems can occur through a fuzzy commitment and a fuzzy vault. The concept of fuzzy incorporates the generation of helper data extracted from biometric features using a secrecy key. The abovementioned helper data, combined with the secrecy key are then both encrypted and stored in the database. In order to authenticate a user, the helper data then uses the model and biometric features to rebuild the key (Eng \& Sadkhan, 2016). A structural representation of this method can be seen below in Figure 1.
+BCSs are systems designed so that digital keys can be directly bound to a particular biometric (Rathgeb \& Uhl, 2011:1–25). One BCS approach is relevant to this particular study, namely biohashing which implements biometric key-generation. However, Rathgeb and Uhl (Rathgeb \& Uhl, 2011:1–25) state that an implementation should not exist that directly generates keys from biometric templates. They elaborate that biometric features cannot provide sufficient information to reliably obtain lengthy and renewable keys without relying on helper data. Helper data is public information that is used within the key generation/retrieval process in a BCS (Rathgeb \& Uhl, 2011:1–25).  This is useful to the study because helper data can be used to transform and obscure biometric information. Another approach to BCS is a biometric key-bind cryptosystem. This involves a secret key that relates to a biometric model by using helper data. To successfully implement this approach, facts regarding both the biometric model and the secret key may not be disclosed (Eng \& Sadkhan, 2016). According to (Paul et al., 2014; Rathgeb \& Uhl, 2011), implementation of key-binding cryptosystems can occur through a fuzzy commitment and a fuzzy vault. The concept of fuzzy incorporates the generation of helper data extracted from biometric features using a secrecy key. The abovementioned helper data, combined with the secrecy key are then both encrypted and stored in the database. In order to authenticate a user, the helper data then uses the model and biometric features to rebuild the key (Eng \& Sadkhan, 2016). A structural representation of this method can be seen below in Figure \ref{fig:System structure for biometric authentication}.
 
 % Figure - System structure for biometric authentication figure
 
@@ -53,7 +53,7 @@ BCSs are systems designed so that digital keys can be directly bound to a partic
 \label{fig:System structure for biometric authentication}
 \end{figure}
 
-Initially, the sensor extracts the specific biometric features from the user (post-enrolment). Once the features have been extracted from the users’, the current information within the system is then matched to that of the template that is stored within the database. However, during enrolment of the user in a BCS, the template that was created for each user undergoes a protection process that transforms the template into a secure template. The abovementioned template protection process includes the binarisation of the extracted biometric features. Once the binary template is created, the template is then further processed by the cryptosystem to ultimately generate the secure template. This means that each time the user attempts to be authenticated, the extracted features use the helper data to rebuild the key and match the generated template to the secure template. Finally, if the templates match then the result will be positive and the user will gain access. 
+Initially, the sensor extracts the specific biometric features from the user (post-enrolment). Once the features have been extracted from the users, the current information within the system is then matched to that of the template that is stored within the database. However, during enrolment of the user in a BCS, the template that was created for each user undergoes a protection process that transforms the template into a secure template. The abovementioned template protection process includes the binarisation of the extracted biometric features. Once the binary template is created, the template is then further processed by the cryptosystem to ultimately generate the secure template. This means that each time the user attempts to be authenticated, the extracted features use the helper data to rebuild the key and match the generated template to the secure template. Finally, if the templates match then the result will be positive and the user will gain access. 
 Having considered a BCS, one needs to weigh up the options regarding the possible approaches to cancelability and implementations thereof. Cancelability, too, has the sole purpose of ensuring computational challenges when attempting to retrieve/recover the original biometric data by a third party (Rathgeb \& Uhl, 2011:1–25). The focal point regarding cancelability remains that biometric characteristics should remain innately robust so that even when transform parameters are applied the biometric features do not lose value/individuality. Along with individuality, by transforming biometrics one should ensure tolerance to intra-class variance so that the False Rejection Rate is not too high. Another important feature that cancelability has to offer is unlinkability (Rathgeb \& Uhl, 2011:1–25). This ensures that multiple transformed templates do not reveal any information relating to the original biometrics. In the unlikely event of data compromise, the transform parameters are simply altered which simultaneously implies biometric template updates. 
 With regards to transforms within a CB implementation, two categories are forthcoming, namely (Jain \textit{et al}., 2008):
   
@@ -69,13 +69,13 @@ The abovementioned approaches differ in performance, accuracy and security. Depe
 	This approach involves the use of a non-invertible function that is applied to the biometric template. By applying this function, stored templates can be updated when transform parameters are modified (Piciucco et al., 2016:1–5; Rathgeb \& Uhl, 2011:1–25). Therefore, security is increased due to the inability to reconstruct the biometric data even though transforms may have been compromised. With this advantage comes an equal and opposite disadvantage. A loss of accuracy and a performance decrease is the disadvantageous result thereof. This is due to transformed biometric templates becoming laborious in comparison processing, which ultimately provides fewer biometric results to process during matching (thus, influencing the accuracy thereof).
 	
 	\subsection{Biometric salting}
-	Biometric salting commonly involves biometric template transforms that are preferred invertible as opposed to the non-invertible approach (abovementioned). The term “salting” refers to the act of merging specific data (such as passwords) with unique random values (“salt”) in order to make all of the original data distinct (Syed Ahmad et al., 2012:7983–7999). In this particular context, this technique may be applicable when a 4-digit PIN is used as the salt to be combined with the hand geometry vector prior to hashing the combination of data. This means that regardless of what biometric feature vector is chosen, the biometric template extraction cannot be reconstructed to the original biometric template (Paul et al., 2014:1059–1067; Rathgeb \& Uhl, 2011:1–25). This commands that transform parameters have to remain private. Variations of the approach may appear if user-specific transforms are applied. However, this demands that each authentication attempt requires transform parameters which may result in discrepancies if attackers successfully attain transform parameters. Ultimately, a decrease in performance is likely if the system implementation does not contain efficient biometric algorithms with high accuracy regarding private transform parameters. In contrast to non-invertible transforms, this approach maintains high recognition performance, however, the latter excels in terms of security (Radha \& Karthikeyan, 2011; Rathgeb \& Uhl, 2011).
+	Biometric salting commonly involves biometric template transforms that are preferred invertible as opposed to the non-invertible approach (mentioned above). The term “salting” refers to the act of merging specific data (such as passwords) with unique random values (“salt”) in order to make all of the original data distinct (Syed Ahmad et al., 2012:7983–7999). In this particular context, this technique may be applicable when a 4-digit PIN is used as the salt to be combined with the hand geometry vector prior to hashing the combination of data. This means that regardless of what biometric feature vector is chosen, the biometric template extraction cannot be reconstructed to the original biometric template (Paul et al., 2014:1059–1067; Rathgeb \& Uhl, 2011:1–25). This commands that transform parameters have to remain private. Variations of the approach may appear if user-specific transforms are applied. However, this demands that each authentication attempt requires transform parameters which may result in discrepancies if attackers successfully attain transform parameters. Ultimately, a decrease in performance is likely if the system implementation does not contain efficient biometric algorithms with high accuracy regarding private transform parameters. In contrast to non-invertible transforms, this approach maintains high recognition performance, however, the latter excels in terms of security (Radha \& Karthikeyan, 2011; Rathgeb \& Uhl, 2011).
 
 
 
 According to Rathgeb and Uhl (2011), even though it is more common to adopt non-invertible approaches to system implementation schemes, biometric salting proves superior. Not only does biometric salting increase performance, but in user-specific transform applications by incorporating two-factor authentication one can improve both security and accuracy.
 
-By taking a closer look at the general structure of using cancelable biometric we can see that during the enrolment phase, the features are extracted, transformed and then stored (Patel et al., 2015). This structure can be seen in the figure below.
+By taking a closer look at the general structure of using cancelable biometric we can see that during the enrolment phase, the features are extracted, transformed and then stored (Patel et al., 2015). This structure can be seen in the figure ~\ref{fig:Cancelable biometric system structure} below.
 
 % Figure - Cancelable biometric system structure
 
@@ -86,11 +86,11 @@ By taking a closer look at the general structure of using cancelable biometric w
 \label{fig:Cancelable biometric system structure}
 \end{figure}
 
-It can be stated that the CB system structure is closely related to that of the BCS structure. However, the fundamental differences between the two are noticeable when attention is given to the timing of template protection. To argue these differences notice that in Figure 1 the template protection occurs post-storage, whereas, in Figure 2 the template protection occurs after the feature extraction and prior to the storage during the transformation phase. Template protection is crucial within an authentication system with regards to attacks conducted upon the system. These template attacks will be further discussed below.
+The CB system structure is closely related to that of the BCS structure, however, the fundamental differences between the two are noticeable when attention is given to the timing of template protection. To argue these differences notice that in Figure ~\ref{fig:System structure for biometric authentication} the template protection occurs post-storage, whereas, in Figure ~\ref{fig:Cancelable biometric system structure} the template protection occurs after the feature extraction and prior to the storage during the transformation phase. Template protection is crucial within an authentication system with regards to attacks conducted upon the system. These template attacks will be further discussed below.
 
     \subsection{ Biometric template attacks}
     
-    Conventional biometric systems have been subjected to numerous infiltration attacks that technologies such as BCS and CB appear to have been able to avert (Rathgeb \& Uhl, 2011:1–25). However, these techniques are known to have vulnerabilities. By analysing the structure of a generic biometric system, we are able to determine which particular processing points are vulnerable to attacks. The figure below illustrates some of the abovementioned vulnerabilities (Patel et al., 2015:54–65).
+    Conventional biometric systems have been subjected to numerous infiltration attacks that technologies such as BCS and CB appear to have been able to avert (Rathgeb \& Uhl, 2011:1–25). However, these techniques are known to have vulnerabilities. By analysing the structure of a generic biometric system, we are able to determine which particular processing points are vulnerable to attacks. The Figure ~\ref{fig:Vulnerability points for biometric system attacks} below illustrates some of the abovementioned vulnerabilities (Patel et al., 2015:54–65).
     
     % Figure - Vulnerability points for biometric system attacks
     
@@ -101,9 +101,9 @@ It can be stated that the CB system structure is closely related to that of the 
     \label{fig:Vulnerability points for biometric system attacks}
     \end{figure}
     
-    Research shows that there are numerous vulnerable points to attack a generic biometric system (Ratha et al., 2001). However, an overview of the five points of attack mentioned above in Figure 3 is presented as follows (Karimovich \& Turakulovich, 2016; Patel et al., 2015; Ratha et al., 2001; Rathgeb \& Uhl, 2011):
+    Research shows that there are numerous vulnerable points to attack a generic biometric system (Ratha et al., 2001). However, an overview of the five points of attack mentioned above in Figure ~\ref{fig:Vulnerability points for biometric system attacks} is presented as follows (Karimovich \& Turakulovich, 2016; Patel et al., 2015; Ratha et al., 2001; Rathgeb \& Uhl, 2011):
     
-    \begin{enumerate}[]label=\roman*.]
+    \begin{enumerate}[label=\roman*.]
     
         \item Spoofing – This type of attack is implemented through the presentation of a   biometric to the biometric input (sensor). An example of this type of attack includes presenting a fake finger to the sensor and so forth.
         \item Replay attack – The use of this form of attack generally involves the resubmission of biometric data that is digitally stored which ultimately bypasses the biometric input device.
@@ -113,7 +113,7 @@ It can be stated that the CB system structure is closely related to that of the 
 
     \end{enumerate}
     
-    With the abovementioned potential attacks in mind, the affected techniques and their potential attack formats should be classified. The attacks in correlation to BCS and CB can be seen in the table below.
+    With the abovementioned potential attacks in mind, the affected techniques and their potential attack formats should be classified. The attacks in correlation to BCS and CB can be seen in Table ~\ref{table:Technique vulnerabilities} below.
     
     % Table - Technique vulnerabilities
     
@@ -133,6 +133,7 @@ It can be stated that the CB system structure is closely related to that of the 
      Overwriting yes/no response & CB\\[1ex]
      \hline
      \end{tabular}
+     \label{table:Technique vulnerabilities}
     \end{table}
     
     
@@ -146,7 +147,7 @@ It can be stated that the CB system structure is closely related to that of the 
     
     The term Secure Hashing Algorithm (SHA) is a term used to describe the abovementioned standard that can be further divided into four specific algorithms, namely SHA-0, -1, -2 and -3. The purpose of such an algorithm is to compute electronic data in a manner that produces a condensed representation of a message (Foti, 2015). The aforementioned representation is commonly known as a “message digest” or “hash.” The length of this message digest remains constant, regardless of the length of the original electronic input data. The algorithmic process that is followed (by all four algorithms as seen below) is one that is both iterative, as well as, unidirectional. By processing electronic data in such a manner, the algorithm ensures the integrity thereof. This is because in the event that the original data should be altered in the slightest, the resulting message digest will be completely contrasting to the message digest of the original data. 
     
-    To liken the various versions of the SHA algorithms, a further analysis of each of the algorithms in terms of maximum input message size, block size, number of rounds executed and message digest size is presented.
+    To liken the various versions of the SHA algorithms, a further analysis of each of the algorithms in terms of maximum input message size, block size, number of rounds executed and message digest size is presented. The SHA comparisons can be seen in Table ~\ref{table: SHA comparisons}
     
     % Table - SHA comparisons
     
@@ -155,12 +156,10 @@ It can be stated that the CB system structure is closely related to that of the 
     \centering
      \begin{tabular}{|p{0.18\textwidth} | p{0.18\textwidth}| p{0.18\textwidth}| p{0.18\textwidth}| p{0.18\textwidth}|} 
      \hline
-    	\textbf{Algorithm} & \textbf{Maximum input message size (bits)} & \textbf{Block size (bits)} & \textbf{Number of rounds executed} & \textbf{Message digest size (bits)} \\ [1ex] 
-     \hline\hline 
-     \centering
+    	\textbf{Algorithm} & \textbf{Maximum input message size (bits)} & \textbf{Block size(bits)} & \textbf{No. of rounds executed} & \textbf{Message digest size (bits)} \\ [1ex] 
+     \hline\hline
      SHA-1 & \[ <2^{64}\] & 512 & 80 & 160 \\[1ex]
-     \hline 
-     \centering
+     \hline
      SHA-2-224 & \[ <2^{64}\] & 512 & 64 & 224 \\[1ex]
      \hline
      SHA-2-256 & \[ <2^{64}\] & 512 & 64 & 256 \\[1ex]
@@ -174,6 +173,7 @@ It can be stated that the CB system structure is closely related to that of the 
      SHA-3-512 & \centering{Unlimited} & 5761 & 24 & 512 \\[1ex]
      \hline
      \end{tabular}
+     \label{table: SHA comparisons}
     \end{table}
     
     It is important to note that prior to this study, the SHA-1 algorithm was broken by Google. A hash function is considered broken when two files happen to produce the same hash value (collision). The way in which this particular attack on SHA-1 occurred was through the use of a chosen-prefix attack. Google managed to use a precise piece of data that was injected into of the files. This caused the files to numerically align during the calculation process (Stevens et al., 2017:570–596).
@@ -188,13 +188,12 @@ It can be stated that the CB system structure is closely related to that of the 
 
         \end{enumerate}
     
-    Regardless of which SHA algorithm is chosen, the core functionality remains similar in the generation of unique hash values for any input that is fed into the algorithm. Each algorithm can be further divided into two phases, namely pre-processing and hash computations. To better explain the process followed within each of the two phases, see the table below (Foti, 2015).
+    Regardless of which SHA algorithm is chosen, the core functionality remains similar in the generation of unique hash values for any input that is fed into the algorithm. Each algorithm can be further divided into two phases, namely pre-processing and hash computations. To better explain the process followed within each of the two phases, see the Table ~\ref{table: SHA phases} below (Foti, 2015).
     
     % Table - SHA phases
     
     \begin{table}[h!]
         \caption{SHA phases}
-        \centering
         \begin{tabular}{|p{0.45\textwidth} | p{0.45\textwidth}|}
           \hline
          \textbf{Pre-processing} & \textbf{Hash computation} \\
@@ -211,7 +210,7 @@ It can be stated that the CB system structure is closely related to that of the 
              \end{enumerate} \\
              \hline
         \end{tabular}
-        \label{tab:SHA phases}
+        \label{table: SHA phases}
     \end{table}
     
     The entire SHA-2-256 algorithm can be summarized using the following equations.
@@ -228,42 +227,21 @@ It can be stated that the CB system structure is closely related to that of the 
         
         \item Initialise the 8 working variables, a, b, c, d, e, f, g and h, containing hash values for (i-1): 
             \begin{gather*}     
-                a = H^{(i-1)}_0 \\
-                b = H^{(i-1)}_1 \\
-                c = H^{(i-1)}_2 \\
-                d = H^{(i-1)}_3 \\
-                e = H^{(i-1)}_4 \\
-                f = H^{(i-1)}_5 \\
-                g = H^{(i-1)}_6 \\
-                h = H^{(i-1)}_7 \\
+                a = H^{(i-1)}_0, b = H^{(i-1)}_1, c = H^{(i-1)}_2, d = H^{(i-1)}_3, e = H^{(i-1)}_4, f = H^{(i-1)}_5, g = H^{(i-1)}_6, h = H^{(i-1)}_7 
             \end{gather*}
         \item For t = 0 to 63:
-            \begin{align*}
+            \begin{gather*}
                 T_1 = h + \sum_{1}^{(256)}(e) + Ch(e,f,g) + K^{(256)}_t \\
                 T_2 = \sum_{0}^{(256)}(a) + Maj(a,b,c) \\
-                h = g \\
-                g = f \\
-                f = e \\
-                e = d + T_1 \\
-                d = c \\
-                c = b \\ 
-                b = a \\
+                h = g, g = f, f = e, e = d + T_1, d = c, c = b, b = a \\
                 a = T_1 + T_2 \\
-            \end{align*}
-        
-        \item Compute the intermediate hash values:
-            
-            \begin{gather*}
-                H^{(i)}_0 = a + H^{(i-1)}_0 \\
-                H^{(i)}_1 = b + H^{(i-1)}_1 \\
-                H^{(i)}_2 = c + H^{(i-1)}_2 \\
-                H^{(i)}_3 = d + H^{(i-1)}_3 \\
-                H^{(i)}_4 = e + H^{(i-1)}_4 \\
-                H^{(i)}_5 = f + H^{(i-1)}_5 \\
-                H^{(i)}_6 = g + H^{(i-1)}_6 \\
-                H^{(i)}_7 = h + H^{(i-1)}_7 \\
             \end{gather*}
         
+        \item Compute the intermediate hash values:
+            \begin{gather*}
+                H^{(i)}_0 = a + H^{(i-1)}_0, H^{(i)}_1 = b + H^{(i-1)}_1, H^{(i)}_2 = c + H^{(i-1)}_2, H^{(i)}_3 = d + H^{(i-1)}_3, \\ 
+                H^{(i)}_4 = e + H^{(i-1)}_4, H^{(i)}_5 = f + H^{(i-1)}_5, H^{(i)}_6 = g + H^{(i-1)}_6, H^{(i)}_7 = h + H^{(i-1)}_7
+            \end{gather*}
     \end{enumerate}
     
     To better explain the algorithm functionality, a use-case for this study will be hashed using the SHA-2-256 algorithm in the form of a digital representation of hand measurements. These measurements can be summarised in text format as 11,12,13,14,15. Each number represents a transformed value for each of the five fingers.
@@ -285,14 +263,14 @@ It can be stated that the CB system structure is closely related to that of the 
             
         \end{enumerate}
         
-        Upon completion of the four steps required for pre-processing, a block of 512 bits is formed and is presented in the table below:
+        Upon completion of the four steps required for pre-processing, a block of 512 bits is formed and is presented in the Table ~\ref{table:Pre-processing bit block example} below:
         \begin{table}[h!]
             
             \caption{Pre-processing bit block example}
-            \label{tab:Pre-processing bit block example}
+            \label{table:Pre-processing bit block example}
             \begin{center}
             \begin{tabular}{|c|}
-             \hline  \rule{0pt}{4ex}   
+             \hline     
              0011000100110001001011000011000100110010001011000011000100110011 \\
              001011000011000100110100001011000011000100110101\underline{1}000000000000000 \\
              0000000000000000000000000000000000000000000000000000000000000000 \\
@@ -312,10 +290,10 @@ It can be stated that the CB system structure is closely related to that of the 
         \begin{table}[h!]
             \caption{Pre-processing bit block divided into 32 bit words}
             \centering
-            \label{tab:Pre-processing bit block divided into 32 bit words}
+            \label{table:Pre-processing bit block divided into 32 bit words}
             
             \begin{tabular}{|c|}
-            \hline \rule{0pt}{4ex} 
+            \hline  
 
             
               1. 00110001001100010010110000110001 \\
@@ -353,46 +331,47 @@ It can be stated that the CB system structure is closely related to that of the 
             \hline
             \end{tabular}
         \end{table}
+        
+        
         This algorithm formally describes how to create the other words. 
-        
         % Equation for algorithm
+        \begin{gather}
+             \textbf{ROTL} [(W_{t-2}) + W_{t-7} + \sigma_0(W_{t-15}) + W_{t-16}]
+        \end{gather}
         
-            \[ \textbf{ROTL} [(W_{t-2}) + W_{t-7} + \sigma_0(W_{t-15}) + W_{t-16}]\]
         
-        To get the 17th word, get the word 15 places back, in this case the 2nd word, make 2 copies of it and right-rotate one of them by 7 places. This means each number moves one place to the right, 7 times, and when a number falls off the edge, it comes back on the other side. Right rotate the other by 18 places. Then right shift the last copy by 3. Right shift means that when a number falls off the edge, they are replaced with zeros on the other side. Do the same for the word 2 places back, 15th word, except right rotate by 17 and 19 places. Then right shift by 10. Add it to the word 16 places back, the 1st word and the words 7 places back, 10th word. Add all of these together and we get the 17th word. Proceed like this until we get 64 words. 
+        To get the 17th word, get the word 15 places back, in this case the second word, make 2 copies of it and right-rotate one of them by 7 places. This means each number moves one place to the right, 7 times, and when a number falls off the edge, it comes back on the other side. Right rotate the other by 18 places. Then right shift the last copy by 3. Right shift means that when a number falls off the edge, they are replaced with zeros on the other side. Do the same for the word 2 places back, 15th word, except right rotate by 17 and 19 places. Then right shift by 10. Add it to the word 16 places back, the 1st word and the words 7 places back, 10th word. Add all of these together and we get the 17th word. Proceed like this until we get 64 words. 
         
         \subsubsection{ Hash computation}
         
-        The last part of the algorithm (step 3) uses the eight initial hash values and the 64 constant values. By converting between base 2 and base 16 is ultimately what produces the complex final signature. 
+        The last part of the algorithm (step 3) uses the eight initial hash values and the 64 constant values. By converting between base 2 and base 16 is ultimately what produces the complex final signature. Table ~\ref{table:Initial hashes and K-Constants} illustrates the aforementioned conversions with the final signature.
+        
+        
         % Table - Initial hashes and K-Constants
             
         \begin{table}[h!]
         \caption{Initial hashes and K-Constants}
-        \centering
         \begin{tabular}{{|p{0.2\textwidth} | p{0.80\textwidth}|}}
           \hline
          \textbf{Initial hashes} & \textbf{K-Constants} \\
          \hline\hline
-            \begin{gather*}
-                H(0) = a09e667 \\
-                H(1) = b67ae85 \\
-                H(2) = 3c6ef372\\
-                H(3) = a54ff53a\\
-                H(4) = 510e527f\\
-                H(5) = 9b05688c\\
-                H(6) = 1f83d9ab\\
-                H(7) = 5be0cd19\\
-            \end{gather*}
-             &  \rule{0pt}{4ex}
-                \begin{justify}
-                   428a2f98 71374491 b5c0fbcf e9b5dba5 3956c25b 59f111f1 923f82a4 ab1c5ed5 d807aa98 12835b01 243185be 550c7dc3 72be5d74 80deb1fe 9bdc06a7 c19bf174 e49b69c1 efbe4786 0fc19dc6 240ca1cc 2de92c6f 4a7484aa 5cb0a9dc 76f988da 983e5152 a831c66d b00327c8 bf597fc7 c6e00bf3 d5a79147 06ca6351 14292967 27b70a85 2e1b2138 4d2c6dfc 53380d13 650a7354 766a0abb 81c2c92e 92722c85 a2bfe8a1 a81a664b c24b8b70 c76c51a3 d192e819 d6990624 f40e3585 106aa070 19a4c116 1e376c08 2748774c 34b0bcb5 391c0cb3 4ed8aa4a 5b9cca4f 682e6ff3 748f82ee 78a5636f 84c87814 8cc70208 90befffa a4506ceb bef9a3f7 c67178f2  
-                 \end{justify}\\
+            \rule{0pt}{4ex}
+                H(0) = a09e667 & 428a2f98 71374491 b5c0fbcf e9b5dba5 3956c25b 59f111f1 923f82a4 \\
+                H(1) = b67ae85 & ab1c5ed5 d807aa98 12835b01 243185be 550c7dc3 72be5d74 80deb1fe \\
+                H(2) = 3c6ef372 & 9bdc06a7 c19bf174 e49b69c1 efbe4786 0fc19dc6 240ca1cc 2de92c6f \\
+                H(3) = a54ff53a & 4a7484aa 5cb0a9dc 76f988da 983e5152 a831c66d b00327c8 bf597fc7 \\
+                H(4) = 510e527f & c6e00bf3 d5a79147 06ca6351 14292967 27b70a85 2e1b2138 4d2c6dfc \\
+                H(5) = 9b05688c & 53380d13 650a7354 766a0abb 81c2c92e 92722c85 a2bfe8a1 a81a664b \\
+                H(6) = 1f83d9ab & c24b8b70 c76c51a3 d192e819 d6990624 f40e3585 106aa070 19a4c116 \\
+                H(7) = 5be0cd19 & 1e376c08 2748774c 34b0bcb5 391c0cb3 4ed8aa4a 5b9cca4f 682e6ff3 \\
+                                & 748f82ee 78a5636f 84c87814 8cc70208 90befffa a4506ceb bef9a3f7 \\
+                                & c67178f2 \\  
         \hline
         \end{tabular}
-        \label{tab:Initial hashes and K-Constants}
+        \label{table:Initial hashes and K-Constants}
         \end{table}
-        
-        To get T1, us the value of e and create 3 new words by right rotating by 6. 11 and 25. Then do an XOR on these values. Then run the Choose function of e, f and g. Get the first K constant, the value of h and the 1st word from the message scheduler and calculate the AND of all of these. 
+       
+        To get T1, us the value of \textit{e} and create three new words by right rotating by 6. 11 and 25. Then do an XOR on these values. Then run the Choose function of e, f and g. Get the first K constant, the value of h and the 1st word from the message scheduler and calculate the AND of all of these. 
         
         To get T2, run the Majority function over a, b and c. Then create 3 new words by Right Rotating a by 2, 13 and 22. Then get the XOR of all of these and swap and modify the values as seen in the function.  
         
@@ -428,13 +407,13 @@ It can be stated that the CB system structure is closely related to that of the 
 
 Ultimately, this message digest would then be stored rather than the plaintext of the original data.
 
-To conclude this subsection, the aim is to combine the key-binding capabilities of a BCS, the secure hashing algorithm and the biometric salting of CB. Once the user-specific biometric information has been transformed and is secure, it is ready for storage. In order to store this sensitive biometric information, rather than using a conventional database (due to its vulnerabilities, i.e. username/password exploits) a technique known as steganography was utilized. 
+To conclude this subsection, the aim is to combine the key-binding capabilities of a BCS, the secure hashing algorithm and the biometric salting of CB. Once the user-specific biometric information has been transformed and is secure, it is ready for storage. In order to store this sensitive biometric information, rather than using a conventional database (due to its vulnerabilities, i.e. username/password exploits) a technique known as steganography was utilized and is described in the next section. 
 
 
 \section[Steganography]{Steganography}
-According to Kishor et al. (2016), secret information is hidden using a type of communication, known as steganography. This is done through the use of multimedia files in cohesion with secret keys to embed information within these multimedia files. Steganography came about when it was realised that cryptography itself was incapable to securely transmit various forms of information across the internet (Jain \& Boaddh, 2016:163–171). The word steganography can be translated from Greek into “covered writing” (Pandit \& Khope, 2016:6115–6117). When hiding sensitive information, the information in question is typically concealed using an alternative format to that of its original. This is done through regeneration of data using multimedia formats. Some of these formats include text, image, audio and even video. For the purposes of this particular study, focus will be maintained upon image steganography and the shrouding of sensitive biometric information by means of bit encryption within the cover object (image). While cryptography disguises only the meaning of a message using code, steganography aims to hide the entire message from possible attackers (Kishor et al., 2016; Pradhan et al., 2016).
+According to Kishor et al. (2016), secret information is hidden using a type of communication, known as steganography. This is done through the use of multimedia files in conjunction with secret keys to embed information within these multimedia files. Steganography came about when it was realised that cryptography itself was incapable to securely transmit various forms of information across the internet (Jain \& Boaddh, 2016:163–171). The word steganography can be translated from Greek into “covered writing” (Pandit \& Khope, 2016:6115–6117). When hiding sensitive information, the information in question is typically concealed using an alternative format to that of its original. This is done through regeneration of data using multimedia formats. Some of these formats include text, image, audio and even video. For the purposes of this particular study, focus will be maintained upon image steganography and the shrouding of sensitive biometric information by means of bit encryption within the cover object (image). While cryptography disguises only the meaning of a message using code, steganography aims to hide the entire message from possible attackers (Kishor et al., 2016; Pradhan et al., 2016).
 
-The conventional flow of image steganography (as seen in Figure 2) follows a combination of encryption and decryption (just as cryptography does), but aims to use a confidential communication channel while secretly storing data and protecting the alteration of that data. An application that also makes this technique crucial to this particular study is the use of steganography as a conventional database alternative (Pandit \& Khope, 2016:6115–6117).
+The conventional flow of image steganography (as seen in Figure ~\ref{fig:Conventional image steganography flow}) follows a combination of encryption and decryption (just as cryptography does), but aims to use a confidential communication channel while secretly storing data and protecting the alteration of that data. An application that also makes this technique crucial to this particular study is the use of steganography as a conventional database alternative (Pandit \& Khope, 2016:6115–6117).
 
 % Figure - Conventional image steganography flow
 
@@ -446,7 +425,7 @@ The conventional flow of image steganography (as seen in Figure 2) follows a com
 \label{fig:Conventional image steganography flow}
 \end{figure}
 
-In image steganography, both the encryption process and the decryption process involve the use of a cover image and a stego-image. In short, the difference between the two is merely that the stego-image contains the sensitive information, while the cover image can be seen as an empty data storage location for the sensitive information. In Figure 2, the steganography process requires sensitive information that is to be stored within the cover media (in this case, the image). This sensitive information is embedded into the image with the use of a secret key and a cover image to hide the information in. With the embedded information, the image is then referred to as the “stego-image.” The sensitive information can then only be extracted if the secret key is known.
+In image steganography, both the encryption process and the decryption process involve the use of a cover image and a stego-image. In short, the difference between the two is merely that the stego-image contains the sensitive information, while the cover image can be seen as an empty data storage location for the sensitive information. In Figure ~\ref{fig:Conventional image steganography flow}, the steganography process requires sensitive information that is to be stored within the cover media (in this case, the image). This sensitive information is embedded into the image with the use of a secret key and a cover image to hide the information in. With the embedded information, the image is then referred to as the “stego-image.” The sensitive information can then only be extracted if the secret key is known.
 
 Steganography can be implemented in various ways. However, the two major techniques that will be discussed regarding image steganography involve the following (Pradhan et al., 2016) (Paul \& Gavrilova, 2012:43–49):
 
@@ -457,7 +436,7 @@ Steganography can be implemented in various ways. However, the two major techniq
 
 The main difference between the two techniques is that when implementing a spatial domain steganography, the pixels within the image are directly manipulated. This is juxtaposed to the transform domain steganography that uses distinct transformations to allow image transformation in the transform domain and then only is the sensitive information stored with the image (Pradhan et al., 2016; Roy \& Changder, 2016).
 
-To broaden the scope of steganography even more, literature states that spatial and transform domain techniques branch out into subcategories of implementation (Radha \& Karthikeyan, 2011; Syed Ahmad et al., 2012; Verma \& Sinha, 2016). A few examples of these methods can be seen in the Table 1.
+Literature broadens the scope of steganography even more in stating that spatial and transform domain techniques branch out into subcategories of implementation (Radha \& Karthikeyan, 2011; Syed Ahmad et al., 2012; Verma \& Sinha, 2016). A few examples of these methods can be seen in the Table ~\ref{table: Steganography methods}.
 
 \begin{table}[h!]
 \caption{Steganography methods}
@@ -473,6 +452,7 @@ To broaden the scope of steganography even more, literature states that spatial 
  Random pixel selection & Discrete Fourier Transform  \\ [1ex] 
  \hline
  \end{tabular}
+ \label{table: Steganography methods}
 \end{table}
 
 
@@ -499,9 +479,9 @@ An image can be seen as a two-dimensional function, where the F(x, y) is the ima
 
 \section[Leap motion controller ]{Leap motion controller }
 
-With the LMC’s advanced hand and finger tracking capabilities, the position, velocity and orientation of all ten fingers, supplemented by hand geometry information, are reported upon with accuracy and reduced latency (Syed Ahmad et al., 2012:7983–7999). Chan et al. (2015)  presented the implementation of an LMC to assume the role of a biometric authentication device by harnessing the abovementioned information. The low-cost factor of this device makes this implementation even more favourable in situations where cost is of substantial concern. One drawback of this approach is that the LMC is a peripheral device that still requires a computer system to connect it to as the device cannot function in a stand-alone way. This disadvantage will add to the associated cost of implementation.
+With the LMC’s advanced hand and finger tracking capabilities, the position, velocity and orientation of all ten fingers, supplemented by hand geometry information, are reported upon with accuracy and low latency (Syed Ahmad et al., 2012:7983–7999). Chan et al. (2015)  presented the implementation of an LMC to assume the role of a biometric authentication device by harnessing the abovementioned information. The low-cost factor of this device makes this implementation even more favourable in situations where cost is of substantial concern. One drawback of this approach is that the LMC is a peripheral device that still requires a computer system to connect it to as the device cannot function in a stand-alone way. This disadvantage will add to the associated cost of implementation.
 
-The LMC is able to scan a human hand at approximately 100 frames per second (FPS). With the use of an LMC it is possible to extract all finger/bone measurements of any given hand during an infrared scan. Any given combination of these measurements should be unique to every person (Chan et al., 2015). As seen in Figure 3, a model of the hand is then created based on the readings taken by the LMC.
+The LMC is able to scan a human hand at approximately 100 frames per second (FPS). With the use of an LMC it is possible to extract all finger/bone measurements of any given hand during an infrared scan. Any given combination of these measurements should be unique to every person (Chan et al., 2015). As seen in Figure ~\ref{fig:Example_of_LMC_generated_hand_model}, a model of the hand is then created based on the readings taken by the LMC.
 
 % Figure - Example of LMC generated hand model
 
@@ -510,11 +490,11 @@ The LMC is able to scan a human hand at approximately 100 frames per second (FPS
 \centering    
 \includegraphics[width=1.0\textwidth]{Chapter2/Figs/Example_of_LMC_generated_hand_model.jpeg}
 \caption[Example of LMC generated hand model]{Example of LMC generated hand model}
-\label{fig:Example of LMC generated hand model}
+\label{fig:Example_of_LMC_generated_hand_model}
 \end{figure}
 
 
-Information retrieved from the hand scans are summarised in Table 2. The LMC is capable of acquiring numerous metrics relating to any presented hand. A combination of Figure 3 and Table 2 provides an overview of the metrics that are relevant to the proposed system. It must be stated that i-iv can be further explained as the acquired lengths and widths of each of these bones.
+Information retrieved from the hand scans are summarised in Table ~\ref{table: Relevant LMC readings}. The LMC is capable of acquiring numerous metrics relating to any presented hand. A combination of Figure ~\ref{fig:Example_of_LMC_generated_hand_model} and Table ~\ref{table: Relevant LMC readings} provides an overview of the metrics that are relevant to the proposed system. It must be stated that i-iv can be further explained as the acquired lengths and widths of each of these bones.
 
 \begin{table}[h!]
 \caption{Relevant LMC readings}
@@ -532,10 +512,11 @@ Information retrieved from the hand scans are summarised in Table 2. The LMC is 
  4.	Width (Fingers) & (iv) Distal \\ [1ex] 
  \hline
  \end{tabular}
+ \label{table: Relevant LMC readings}
 \end{table}
 
 
-All of the above information becomes relevant when attempting to authenticate users based on their hand-geometry. Although the LMC maintains great accuracy when gathering information regarding to the presented hand, the readings tend to differ depending on the position of the hand in relation to the LMC device itself. The readings show minimal discrepancy; however, this could become an issue when statistically analysing the false acceptance rate and false rejection rate of the final authentication system (Nagar \& Jain, 2009:81–85).
+All of the above information becomes relevant when attempting to authenticate users based on their hand-geometry. Although the LMC maintains great accuracy when gathering information regarding to the presented hand, the readings tend to differ depending on the position of the hand in relation to the LMC device itself. The readings show minimal discrepancy (see Chapter 4); however, this could become an issue when statistically analysing the false acceptance rate and false rejection rate of the final authentication system (Nagar \& Jain, 2009:81–85).
 
 While scanning the hand using an LMC one can vary the length of the scans to acquire a larger data set for each user reading during the enrolment and storage phase. This allows for the system to iterate through the hand and its 19 bones (three bones per finger, except for the intermediate bone which is non-existent in the thumb) within the fingers and retrieve the lengths of each of those bones.
 
