@@ -211,20 +211,19 @@ This process all occurs at the time of initiating the scan via the LMC. To furth
 
 % Algorithm - Leap motion controller algorithm to extract hand geometry
 
-\begin{algorithm}
+\begin{algorithm}[H]
  \SetKwInOut{Input}{Input}
     \SetKwInOut{Output}{Output}
 
     \underline{function ExtractHandGeometry} $(hand)$\;
     \Input{Hand object}
-    \Output{Hand Measurements ($fingerLength$, $boneLength$}
+    \Output{Hand Measurements ($fingerLength$, $boneLength$)}
     \For{$hand$ in $hands$}{
-        \eIf{$hand$=$RightHand$}
-          {
+        \eIf{$hand$=$RightHand$}{
             \For{$finger$ in $Fingers$}{
                 \DontPrintSemicolon
                 \space
-                $fingerType$ = ClassifyFinger($finger$)\; 
+                $fingerType$ = ClassifyFinger($finger$); 
                 \tcp{Thumb, Index, Middle, Ring \& Pinky}
                 
                 \Switch{$fingerType$}{
@@ -237,18 +236,17 @@ This process all occurs at the time of initiating the scan via the LMC. To furth
                             \tcp{Metacarpal, Proximal, Intermediate \& Distal }
                                 AddMeasurements($boneType$);
                             
-                            }
                         }
-                    }\EndFor
-                        
-                \EndSwitch
-            
-            }\EndFor
+                    }
+                }
+                     
+            }
             return $HandGeometryMeasurements$;
           }
           {
             return $CloseConnectionError$;
-          }}
+          }
+    }
          
     
     \caption{Leap motion controller algorithm to extract hand geometry}
@@ -610,7 +608,7 @@ The pseudo-code below (Algorithm 1) aims to provide an overview of what input is
      \Input{$PIN$, $Biometric Features$ {handID (hID), array[boneType (bT), boneWidth (bW), boneLength (bL)]}}
      \Output{User-specific HashID for Steganography}
      
-      \eIf{(PIN == hID) && (enrolled == true)}{
+      \eIf{(PIN == hID) \&\& (enrolled == true)}{
         handGeo = Transform(fingerBoneInfo)\;
         Authenticate(getPixels(map),handGeo)\;
       }{
