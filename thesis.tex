@@ -3,7 +3,7 @@
 
 % LP added "ONESIDE" or "OPENANY" to remove blank pages
 
-\documentclass[a4paper,12pt,oneside,times,numbered,print,index]{Classes/PhDThesisPSnPDF}
+\documentclass[a4paper,12pt,oneside,times,numbered,print,chapter]{Classes/PhDThesisPSnPDF}
 
 % ******************************************************************************
 % ******************************* Class Options ********************************
@@ -104,32 +104,36 @@
 % Useful option to review a particular chapter or to send it to supervisior.
 % To use choose `chapter' option in the document class
 
-%  \ifdefineChapter
+ \ifdefineChapter
+%  	\includeonly{Chapter1/chapter1}
+%  	\includeonly{Chapter2/chapter2}
 %  	\includeonly{Chapter3/chapter3}
-%  \fi
+ 	\includeonly{Chapter4/chapter4}
+%  	\includeonly{Chapter5/chapter5}
+ \fi
 
 \usepackage{pdfpages}
 % ******************************** Front Matter ********************************
 \begin{document}
 \includepdf{CoverPage.pdf}
-% \frontmatter
+\frontmatter
 
 % \maketitle
 
-% \include{Dedication/dedication}
-% \include{Declaration/declaration}
-% \include{Acknowledgement/acknowledgement}
-% \include{Abstract/abstract}
+\include{Dedication/dedication}
+\include{Declaration/declaration}
+\include{Acknowledgement/acknowledgement}
+\include{Abstract/abstract}
 
 % *********************** Adding TOC and List of Figures ***********************
 
-% \tableofcontents
+\tableofcontents
 
-% \listoffigures
+\listoffigures
 
-% \listoftables
+\listoftables
 
-% \listofalgorithms
+\listofalgorithms
 
 % \printnomenclature[space] space can be set as 2em between symbol and description
 % \printnomenclature[3em]
@@ -139,11 +143,11 @@
 % ******************************** Main Matter *********************************
 \mainmatter
 
-% \include{Chapter1/chapter1}
-% \include{Chapter2/chapter2}
+\include{Chapter1/chapter1}
+\include{Chapter2/chapter2}
 \include{Chapter3/chapter3}
-% \include{Chapter4/chapter4}
-% \include{Chapter5/chapter5}
+\include{Chapter4/chapter4}
+\include{Chapter5/chapter5}
 % \include{Chapter6/chapter6}
 % \include{Chapter7/chapter7}
 

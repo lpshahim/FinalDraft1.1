@@ -16,7 +16,7 @@ In an attempt to quantify the performance of the proposed system, a threefold ev
 
 \section{LMC performance evaluation}
 
-To illustrate the efficiency and reliability of the LMC, the data that was collected from one randomly selected, five second hand geometry scan is presented in both Table III and Figure VI below. 
+To illustrate the efficiency and reliability of the LMC, the data that was collected from one randomly selected, five second hand geometry scan is presented in both Table ~\ref{table: Randomly selected data from five second scan} and Figure ~\ref{fig:Five Second hand scan graph} below. 
 In order to present a visualisation with a high enough resolution to be able to see the variance in the scan readings, only the three fingers most similar in length are shown (i.e., the index, middle, and ring fingers). 
 
 % Table - Data from One, 5 second hand geometry scan
@@ -31,6 +31,7 @@ In order to present a visualisation with a high enough resolution to be able to 
      0.197203783 & 0.424346553 &  0.464246258 & 0.438259197 & 0.35738522 \\[1ex]
      \hline 
      \end{tabular}
+     \label{table: Randomly selected data from five second scan}
     \end{table}
 
 % Figure - Five Second hand scan graph
@@ -42,7 +43,7 @@ In order to present a visualisation with a high enough resolution to be able to 
     \label{fig:Five Second hand scan graph}
     \end{figure}
     
-The significance of this data is prevalent when taking into consideration the distribution throughout the scan. It is of utmost importance to conistently extract concise data readings throughout the length of the scan. Thus, the standard deviation of the raw data correlating to the plotted data was calculated in an attempt to demonstrate the accuracy that the LMC provides (see Table III).
+The significance of this data is prevalent when taking into consideration the distribution throughout the scan. It is of utmost importance to conistently extract concise data readings throughout the length of the scan. Thus, the standard deviation of the raw data correlating to the plotted data was calculated in an attempt to demonstrate the accuracy that the LMC provides (see Table ~\ref{table: Randomly selected data from five second scan}).
 
 It is interesting to note that the longer the scan has progressed, the more varied the readings become. This is attributed to the instability that is associated with an unsupported hand being held in mid-air for any given period of time.
 
@@ -50,7 +51,7 @@ It is interesting to note that the longer the scan has progressed, the more vari
 
 Despite the abovementioned LMC accuracy, the system shows slight deviation from one scan to the next. To provide an explicit limit regarding the deviation of the readings during a scan, it was decided to measure a tolerance range.
 
-The manner within which this tolerance range was calculated involves comparing test data from user enrolment scan to that of the associated authentication scan. This data includes all of the users and their transformed vector combinations. With this data, the maximum tolerance range was extrapolated based on the variations produced by the system. As seen in Figure VII below, it was concluded that the maximum tolerance range for this data set is 5mm.
+The manner within which this tolerance range was calculated involves comparing test data from user enrolment scan to that of the associated authentication scan. This data includes all of the users and their transformed vector combinations. With this data, the maximum tolerance range was extrapolated based on the variations produced by the system. As seen in Figure ~\ref{fig:Comparative vector tolerance} below, it was concluded that the maximum tolerance range for this data set is 5mm.
 
 % Figure - Comparative vector tolerance
     
@@ -107,7 +108,7 @@ Upon further evaluation, with the tolerance range at a maximum of 5mm, the accep
 
 \section{Overall system evaluation}
 
-As deduced from Figure VIII, a zero-tolerance rate resulted in only a 12.5\% true acceptance rate. If this tolerance is then increased, the true acceptance rate also increases (e.g. 97.5\% with a 4mm tolerance) until a 100\% true acceptance rate is obtained at 5mm tolerance. 
+As deduced from Figure ~\ref{fig:System tolerance vs acceptance rates}, a zero-tolerance rate resulted in only a 12.5\% true acceptance rate. If this tolerance is then increased, the true acceptance rate also increases (e.g. 97.5\% with a 4mm tolerance) until a 100\% true acceptance rate is obtained at 5mm tolerance. 
 When considering implementing this particular system approach, one needs to determine what risk factor is suitable within the authentication scenario. If the users that need to be authenticated are to be granted access to sensitive data/areas, then the tolerance range should be adjusted accordingly. The acceptance rate is drastically affected when using the maximum tolerance range. With such a high tolerance range, the false acceptance rate is also dramatically increased, but because of the two-factor authentication provided with the allocated PIN, the users are authenticated correctly.
 
 % Figure - System tolerance vs acceptance rates
