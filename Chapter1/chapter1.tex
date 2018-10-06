@@ -18,10 +18,13 @@
 The general consensus regarding information security appears to be largely focussed on the technical aspects and approaches to implementing a holistically secure system that caters for any/all breaches \cite{Anderson2001}. One needs to consider that security within a system has to do largely with what is being protected, as well as, what malicious incentives attackers may have for wanting to gain access to information within that particular system. Incentives for attack tend to skew largely in favour of financial gain. However, another common incentive includes supporting an activist approach against organisations by gaining unauthorised access into their information systems and exposing private information to the public. As human beings our innate fear of exposure drives our motivation to protect private information that is directly/indirectly related to ourselves, our family members and/or possessions. In order to achieve this, authentication systems were developed and implemented for information systems. 
 
 Within the security field, authentication can occur using knowledge (such as a PIN), physical possession (such as an RFID tag) and biometrics \cite{Liu2001}. Biometric information remains the most personal of possessions. By using biometric information to authenticate users the system removes problem areas such as forgotten passwords and loss of tags etc. The most basic authentication process model can be seen in Figure ~\ref{fig:basic_authentication_process_model} below.
-\begin{figure}[hbtp]
 
+
+
+\begin{figure}[hbtp]
 \centering
-\includegraphics[width=0.8\textwidth]{Chapter1/Figs/Figure1.jpg}
+% \includegraphics[width=0.8\textwidth]{Chapter1/Figs/Figure1.jpg}
+\includesvg[width=1\textwidth]{Chapter1/SVG/Figure1-1.svg}
 \caption{ Basic authentication process model}
 \label{fig:basic_authentication_process_model}
 \end{figure}
@@ -50,11 +53,12 @@ Thus, this research proposes the development of a novel CB algorithm by employin
 
 
 %********************************** % Third Section  *************************************
-\section{Research question}  %Section - 1.3 
+\section{Research assertion}  %Section - 1.3 
 \label{section1.3}
 
 Biometric cancelability can be enhanced using user-based transform parameters (obtained from an LMC) for a steganography algorithm that stores biometric information.
 
+This study aims to justify this assertion using on-going research, development and testing in order to create a system that is capable of achieving the desired result.
 
 \section{Aim and objectives}  %Section - 1.4 
 \label{section1.4}
@@ -67,13 +71,19 @@ To achieve the primary objective, the following secondary objectives need to be 
 \item Evaluation of the created system using error-based metrics and iterative validation testing.
 \end{enumerate}
 
+These aims and objectives are set out prior to initiating the research process such that the process happens seamlessly. However, one must determine what kind of research needs to be done before the process itself begins. This is discussed in the following section.
+
 \section{Research method}  %Section - 1.5 
+As the title of this section suggests, a research method needs to selected prior to conducting research in order to maintain a pattern that can be justified accordingly. This is regarded as a pattern that a researcher follows throughout the study. This section focuses on differentiating between research paradigms and their respective properties.
+
 \subsection{Introduction}
 In this section various research paradigms that were considered for this study are will be discussed, followed by the chosen paradigm and research method for this study. The following research conducted on the paradigms is predominantly based on Oates \cite{OatesJ2006}. The discussion entails an overview of the design science research method, preceded by a summary of both the interpretivistic and positivistic approaches.
 
 \subsection{Interpretivistic paradigm}
+According to De Villiers \cite{DeVilliers2005}, interpretivism attempts to discover various, novel manners within which ontological inferences are established due to the time and context of the aforementioned inference.
+
 \subsubsection{Introduction to interpretivism}
-According to Oates(2006), interpretivism refers to the researcher’s ability to analyse an information system by means of comprehending the processes within its development in terms of social factors \cite{OatesJ2006}. These social factors involve the people that created the systems and the dependencies from a social standpoint within a particular framework.
+According to Oates \cite{OatesJ2006}, interpretivism refers to the researcher’s ability to analyse an information system by means of comprehending the processes within its development in terms of social factors \cite{OatesJ2006}. These social factors involve the people that created the systems and the dependencies from a social standpoint within a particular framework.
 It can, therefore, be concluded that an interpretivistic approach to research is not focused on the proof or disproof of a particular theory. Instead, interpretivism has to do with the identification, researching techniques and the explanation of the social factors that contribute to holistically understanding a particular social context.
 \subsubsection{Ontology \& epistemology}
 The ontology of interpretivism has to do with being able to comprehend various kinds of opinions and interpretations in an attempt to combine multiple versions of the truth. The researcher should, thus, accept that his/her own personal perspectives and understanding of the particular topic will contribute to the final results that will be gained from the study.  This particular researcher should ensure that he/she possesses a non-neutral perspective in order to interpret the topic in a manner that is influence by the various social factors.
@@ -106,9 +116,13 @@ Because interpretivistic researchers need to focus on the plausibility of a rese
 	\item Field notes.
 \end{enumerate}
 
+With the use of these data gathering techniques and analyses one is able to justify conclusions based on what is observed at that specific time, and in that particular context.
+
 \subsection{Positivistic paradigm}
+According to De Villiers \cite{DeVilliers2005}, the positivistic approach explicitly proclaims that there is a single objective reality that is objective, absolute and exists independently of human beings. 
+
 \subsubsection{Introduction to positivism} 
-According to Jokobsen, positivism refers to the positions within philosophy that accentuate both scientific methods, as well as, data that is empirical \cite{Jakobsen2013}. Within the Business Dictionary, positivism is a concept that perceives true knowledge to be that that is directly linked to scientific knowledge based on what is observed. It is then stated that empiricism is extended within positivism \cite{BusinessDictionary}. 
+According to Jokobsen \cite{Jakobsen2013}, positivism refers to the positions within philosophy that accentuate both scientific methods, as well as, data that is empirical. Within the Business Dictionary, positivism is a concept that perceives true knowledge to be that that is directly linked to scientific knowledge based on what is observed. It is then stated that empiricism is extended within positivism \cite{BusinessDictionary}. 
 It can, therefore, be concluded that a positivistic approach to research is based on empiricism and the use of scientific methods to infer knowledge based on observations that are made once data has been gathered and analysed.
 \subsubsection{Ontology \& epistemology}
 The ontology of positivism is to do with the way in which the world is observed, measured and modelled by a specific researcher. This specific researcher should also ensure that he/she takes a neutral stand-point and is objective in his/her approach. 
@@ -123,8 +137,13 @@ Because positivism is based on a ‘scientific approach’ to research, the rese
 	\item Data analysis using quantitative methods. Within the positivistic approach, the preferred data analysis technique is that of a quantitative nature. This involves creation of mathematical models to logically and objectively analyse the given results and observations.
 \end{enumerate}
 
+As all approaches are critiqued, so is the positivistic approach. 
+
 \subsubsection{Positivism critique}
 Because the positivism involves studying aspects relating to the natural world, researchers who prefer other methods are likely to impose on this technique. Positivism is a very general approach to research and it cannot always be used to generalize the ontology of things. This shows that there are not always predictable patterns and that research can evolve around various natural interpretations.
+
+The general methods used within the positivistic approach are seen in the following section.
+
 \subsubsection{Positivistic methods}
 The method used within positivism is a scientific method. Within this method, it can be assumed that objectivity is crucial within our investigation, and that the world could be viewed as an orderly entity that does not operate in a random fashion \cite{OatesJ2006}. 
 With the use of the scientific method, it can be stated that various characteristics of positivism are used. Such characteristics include reducing problems, repeatability of processes and finally refuting theories. 
@@ -138,47 +157,60 @@ The scientific method runs through an iterative cycle which involves the followi
 	\item Deem the assumption accepted or rejected.
 \end{enumerate}
 
-In conclusion, the methods used within positivism are structured and involves a set process by stating the research assumption and then either accepting or rejecting the assumption based on objective observation and analysis.
+In conclusion, the methods used within positivism are structured and involves a set process by stating the research assumption and then either accepting or rejecting the assumption based on objective observation and analysis. 
+
+This observation and analysis is achieved through the following data gathering techniques.
 
 \subsubsection{Data gathering techniques and analysis}
 Various data gathering techniques may be used within positivistic research. Such techniques mainly involve experiments. However, other methods such as the sending out of surveys and questionnaires. Once these techniques have been used to gather data, the analysis of this data can then be described as quantitative. The second form of data analysis may be described as qualitative. This involves results obtained from interviews, observed data, narrations and documentation. Qualitative research focusses on data that is not always measurable and includes data such as textual data, images and audio when using techniques such as interviews etc. 
+
 In conclusion, these data gathering techniques include methods such as interviews and surveys with the results being analysed in either a quantitative manner or a qualitative manner.
+
 \subsection{Design science research}
-\subsubsection{Overview} 
+Design science aims to consider artifacts within context and to provide holistic design and investigation upon that artifact \cite{wieringa2014design}.
+
+\subsubsection{DSR overview}
 A general definition for research would be an activity that aids in the detailed comprehension of a specific phenomenon \cite{Vaishnavi2015}. In contrast to the aforementioned definition, DSR allows for creation of the phenomenon rather than the understanding thereof. Furthermore, research typically involves the comprehension of a phenomenon and allows the research to make some sort of prediction regarding the phenomenon’s outcome to contribute theory of knowledge that is deemed valid (based on knowledge and understanding gained throughout the process). Owen \cite{owen1998design} proposes that through action, knowledge can be generated. Critics occasionally consider this approach to lack in rigor. However, the process is far from unstructured.
 What differentiates DSR from conventional design approaches is that it targets the unknown areas and explores the problems that may not have been solved yet. This is purely to challenge intellectual risk and to fill the void of missing knowledge within a research community \cite{Vaishnavi2015}.
+
+
 \subsubsection{DSR process model}
 The DSR process model can be seen below in Figure ~\ref{fig:DSR_Process_Model} \cite{Vaishnavi2015}. This precedes the descriptions of each of the phases in the next section.
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.8\textwidth]{Chapter1/Figs/Figure2.jpg}
+% \includegraphics[width=0.8\textwidth]{Chapter1/Figs/Figure2.jpg}
+\includesvg[width=1\textwidth]{Chapter1/SVG/Figure1-2.svg}
 \caption{DSR Process Model}
 \label{fig:DSR_Process_Model}
 \end{figure}
 
 \subsubsection{Phases}
 \begin{enumerate}[label=\roman*.]
-	\item Awareness of the problem\\\vspace{4mm}
+	\item Awareness of the problem\\
 	To be sufficiently aware of the problem at hand it is the researcher’s responsibility to maintain constant and consistent knowledge relating to the problem from various sources (such as within allied disciplines). In this way, the researcher may come across new developments to propose improved approaches. As seen in the above figure, the output for a researcher’s awareness to a problem is ultimately a proposal.
 	
-	\item Suggestion \\\vspace{4mm}
+	\item Suggestion \\
 	This is directly linked to the proposal as the researcher creatively displays the envisioned solution to the problem based on the awareness thereof. After having spent a considerable amount of time and effort into sufficiently comprehending the problem, if the researcher fails to produce an idea or design that suffices then the proposal will be set aside. Thus, possibly saving time that may have been spent on further research and development.
 This step also cohesively ties into the positivistic approach of materialising the researcher’s curiosity relating to the phenomenon at hand.
 
-	\item Development \\\vspace{4mm}
+	\item Development \\
 	The development phase merely attempts to extend upon the tentative design that was created in the suggestion phase. Implementing this phase is strongly dependent on the type of artefact to be produced. The design of the artefact may be a novelty rather than the construction thereof.
 	
-	\item Evaluation \\\vspace{4mm}
+	\item Evaluation \\
 	Once the development of the artefact is complete, a researcher commences with evaluation thereof. This evaluation is based implicitly on criteria set out in the initial proposal. This phase is crucial to the research because any aberrations from initial anticipations must be carefully noted and thoroughly explained. It is during this phase that this positivistic approach to the problem exploration may be confirmed or acquitted. 
 	
-	\item Conclusion \\\vspace{4mm}
+	\item Conclusion \\
 	By concluding the study, the researcher typically states whether the results sufficed the hypothesis or ‘problem exploration’ to have been accurate and justifiable by proof. These results are strengthened with knowledge gained throughout the research process and confirmed by facts observed throughout extensive studies. By concluding the study, it can be expected that a knowledge contribution be made to the specific research field.
 \end{enumerate}
 
-\subsection{Conclusion}
+These phases serve as a guideline for the manner within which the methodology progresses relating to this study and its own life-cycle from conception until completion. 
+
+\subsection{Reflection}
 Upon completing the analysis of the previously discussed approaches, it was concluded that this study is positivistic in nature and should follow the DSR method. This can be motivated due to the awareness of the problem that exists within biometric authentication systems. This research intends to use that positivistic approach to verify whether or not the suggested solution will be able to enhance biometric cancelability through the development of a biometric authentication system using an LMC and steganographic techniques. Once the development of this system is complete, evaluation thereof will follow and based on the statistical data obtained, the research process can be concluded by determining whether the results justify the hypothesis.
 
-\section{Deployment}  %Section - 1.6 
+Ergo, due to the nature of this study and context of the associated problem, a biometric authentication system is designed and developed according to the positivistic paradigm.
+
+\section{Conclusion}  %Section - 1.6 
 \label{section1.6}
 Within Chapter 2, a literature study was conducted on related topics to the explored problem. Related research will be discussed along with the various subsections that relate to the tentative design that was created. These subsections include the concepts of biometrics, cancelability, steganography and the LMC. Furthermore, these subsections will include what each element consists of, how they work, how they suit this study and finally how they will be implemented.
 In Chapter 3, the system design will be described with regards to its various elements and the chosen approach for each element will be discussed at length.

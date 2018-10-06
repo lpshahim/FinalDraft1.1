@@ -12,9 +12,35 @@ In an attempt to quantify the performance of the proposed system, a threefold ev
 
 \section{Testing methodology}
 
-\textcolor{yellow}{\textbf{\hl{STILL BUSY WRITING THE PROGRAM TO TEST AND GRAPH THE PERFORMANCE WITHOUT THE LMC}}}
+%****************************************************************
 
-\section{LMC performance evaluation}
+In testing the system, it was decided that a simulation should be initiated in order to determine the reliability and efficiency of the system by eliminating the LMC. This was done due to the device's lack of customisability. As the system stored the transformed biometric data of the forty users within stego-image 2, the simulation would attempt to authenticate only the user data that was extracted during enrolment and authentication phases. In order to successfully simulate the authentication process, the following steps would need to be conducted: 
+
+\begin{enumerate}[label=\roman*.]
+    \item Both stego-images will be stored to read information from within the test program
+    \item A list will be created correlating to the users PINs;
+    \item A list will be created correlating to the transformed hand geometry extracted during the authentication scans;
+    \item These lists will be iterated accordingly having each PIN in the list hashed and matched to the data corresponding to that PIN in stego-image 1;
+    \item Once the PIN has successfully matched, the corresponding authentication transformation will be hashed and matched to the data within stego-image 2;
+    \item Each of the aforementioned steps will be timed in order to gauge the efficiency of the matching algorithm.
+    
+\end{enumerate}
+
+% Figure - Simulation authentication test
+    
+    \begin{figure}[htbp!] 
+    \centering    
+    \includegraphics[width=1.0\textwidth]{Chapter4/Figs/AuthTest1.png}
+    % \includesvg[width=0.8\textwidth]{Chapter4/Figs/AuthTest1.svg}
+    \caption[Simulation for time taken to authenticate users]{Simulation for time taken to authenticate users}
+    \label{fig:Simulation for time taken to authenticate users}
+    \end{figure}
+    
+With the core functionality of the proposed system being to successfully transform and authenticate users, the efficiency is seen to be slightly lacking. As the above Figure \ref{fig:Simulation for time taken to authenticate users} shows, the algorithm used to find the authentication match within the threshold tolerance range of 5 affects the speed at which a user can be authenticated. A simple and effective solution to this drawback of obtaining a successful match may be to place an upper limit on the time that the algorithm is allowed to scan for a match for. This upper limit can be deduced from the average time taken to authenticate all forty users of 6,65s. 
+
+%****************************************************************
+
+\subsection{LMC performance evaluation}
 
 To illustrate the efficiency and reliability of the LMC, the data that was collected from one randomly selected, five second hand geometry scan is presented in both Table ~\ref{table: Randomly selected data from five second scan} and Figure ~\ref{fig:Five Second hand scan graph} below. 
 In order to present a visualisation with a high enough resolution to be able to see the variance in the scan readings, only the three fingers most similar in length are shown (i.e., the index, middle, and ring fingers). 
@@ -38,7 +64,8 @@ In order to present a visualisation with a high enough resolution to be able to 
     
     \begin{figure}[htbp!] 
     \centering    
-    \includegraphics[width=1.0\textwidth]{Chapter4/Figs/FiveSecondScanGraph.jpg}
+    \includegraphics[width=1.0\textwidth]{Chapter4/Figs/Consistency.png}
+    % \includesvg[width=0.8\textwidth]{Chapter4/Figs/Figure1.svg}
     \caption[Five Second hand scan graph]{Five Second hand scan graph}
     \label{fig:Five Second hand scan graph}
     \end{figure}
@@ -47,7 +74,7 @@ The significance of this data is prevalent when taking into consideration the di
 
 It is interesting to note that the longer the scan has progressed, the more varied the readings become. This is attributed to the instability that is associated with an unsupported hand being held in mid-air for any given period of time.
 
-\section{Comparitive vector tolerance}
+\subsection{Comparitive vector tolerance}
 
 Despite the abovementioned LMC accuracy, the system shows slight deviation from one scan to the next. To provide an explicit limit regarding the deviation of the readings during a scan, it was decided to measure a tolerance range.
 
@@ -57,7 +84,8 @@ The manner within which this tolerance range was calculated involves comparing t
     
     \begin{figure}[htbp!] 
     \centering    
-    \includegraphics[width=1.0\textwidth]{Chapter4/Figs/ComparitiveVectorTolerance.jpg}
+    \includegraphics[width=1.0\textwidth]{Chapter4/Figs/Comparative.png}
+    % \includesvg[width=1\textwidth]{Chapter4/SVG/Comparative-pdf.svg}
     \caption[Comparative vector tolerance]{Comparative vector tolerance}
     \label{fig:Comparative vector tolerance}
     \end{figure}
@@ -106,7 +134,7 @@ Upon further evaluation, with the tolerance range at a maximum of 5mm, the accep
 \end{algorithm}
 
 
-\section{Overall system evaluation}
+\subsection{Overall system evaluation}
 
 As deduced from Figure ~\ref{fig:System tolerance vs acceptance rates}, a zero-tolerance rate resulted in only a 12.5\% true acceptance rate. If this tolerance is then increased, the true acceptance rate also increases (e.g. 97.5\% with a 4mm tolerance) until a 100\% true acceptance rate is obtained at 5mm tolerance. 
 When considering implementing this particular system approach, one needs to determine what risk factor is suitable within the authentication scenario. If the users that need to be authenticated are to be granted access to sensitive data/areas, then the tolerance range should be adjusted accordingly. The acceptance rate is drastically affected when using the maximum tolerance range. With such a high tolerance range, the false acceptance rate is also dramatically increased, but because of the two-factor authentication provided with the allocated PIN, the users are authenticated correctly.
@@ -115,7 +143,8 @@ When considering implementing this particular system approach, one needs to dete
     
     \begin{figure}[htbp!] 
     \centering    
-    \includegraphics[width=1.0\textwidth]{Chapter4/Figs/ToleranceVsAcceptanceGraph.jpg}
+    \includegraphics[width=1.0\textwidth]{Chapter4/Figs/Tolerance.png}
+    % \includesvg[width=1\textwidth]{Chapter4/SVG/Tolerance-pdf.svg}
     \caption[System tolerance vs acceptance rates]{System tolerance vs acceptance rates}
     \label{fig:System tolerance vs acceptance rates}
     \end{figure}
@@ -127,13 +156,6 @@ The proposed technique has revealed several promising advantages by using a comb
 Bearing in mind the abovementioned advantages, one must acknowledge some disadvantages are present when using this approach. This system was only exposed to limited testing and the authentication accuracy and robustness will need to be measured using a formal evaluation. In order to fully explore the system’s functionality, one would have to extensively test the use of this framework on a larger scale. This will form part of the ongoing research.
 
 
-\section{Data}
-
-\subsection{Extraction}
-
-\subsection{Analysis}
-
-% \section{Optimisation}
 
 \section{Algorithm evaluation}
 
