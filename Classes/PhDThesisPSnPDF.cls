@@ -261,6 +261,7 @@ supported!}
 \renewcommand{\contentsname}{Table of contents}
 \renewcommand{\listfigurename}{List of figures}
 \renewcommand{\listtablename}{List of tables}
+\renewcommand{\listalgorithmcfname}{List of algorithms}
 
 % Hides Contents appearing from TOC, but adds it to bookmarks
 \let\temptableofcontents\tableofcontents

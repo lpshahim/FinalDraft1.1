@@ -14,7 +14,9 @@ In an attempt to quantify the performance of the proposed system, a threefold ev
 
 %****************************************************************
 
-In testing the system, it was decided that a simulation should be initiated in order to determine the reliability and efficiency of the system by eliminating the LMC. This was done due to the device's lack of customisability. As the system stored the transformed biometric data of the forty users within stego-image 2, the simulation would attempt to authenticate only the user data that was extracted during enrolment and authentication phases. In order to successfully simulate the authentication process, the following steps would need to be conducted: 
+In testing the system, it was decided that a simulation should be initiated in order to determine the reliability and efficiency of the system by eliminating the LMC. This was done due to the device's lack of customisability. As the system stored the transformed biometric data of the forty users within stego-image 2, the simulation would attempt to authenticate only the user data that was extracted during enrolment and authentication phases. 
+
+In order to successfully simulate the authentication process, the following steps would need to be conducted: 
 
 \begin{enumerate}[label=\roman*.]
     \item Both stego-images will be stored to read information from within the test program
@@ -38,7 +40,6 @@ In testing the system, it was decided that a simulation should be initiated in o
     
 With the core functionality of the proposed system being to successfully transform and authenticate users, the efficiency is seen to be slightly lacking. As the above Figure \ref{fig:Simulation for time taken to authenticate users} shows, the algorithm used to find the authentication match within the threshold tolerance range of 5 affects the speed at which a user can be authenticated. A simple and effective solution to this drawback of obtaining a successful match may be to place an upper limit on the time that the algorithm is allowed to scan for a match for. This upper limit can be deduced from the average time taken to authenticate all forty users of 6,65s. 
 
-%****************************************************************
 
 \subsection{LMC performance evaluation}
 
@@ -76,7 +77,7 @@ It is interesting to note that the longer the scan has progressed, the more vari
 
 \subsection{Comparitive vector tolerance}
 
-Despite the abovementioned LMC accuracy, the system shows slight deviation from one scan to the next. To provide an explicit limit regarding the deviation of the readings during a scan, it was decided to measure a tolerance range.
+Despite the above-mentioned LMC accuracy, the system shows slight deviation from one scan to the next. To provide an explicit limit regarding the deviation of the readings during a scan, it was decided to measure a tolerance range.
 
 The manner within which this tolerance range was calculated involves comparing test data from user enrolment scan to that of the associated authentication scan. This data includes all of the users and their transformed vector combinations. With this data, the maximum tolerance range was extrapolated based on the variations produced by the system. As seen in Figure ~\ref{fig:Comparative vector tolerance} below, it was concluded that the maximum tolerance range for this data set is 5mm.
 
@@ -92,6 +93,33 @@ The manner within which this tolerance range was calculated involves comparing t
 
 Upon further evaluation, with the tolerance range at a maximum of 5mm, the acceptance rates exponentially improved. This, however, increased the processing time to find a positive match within the tolerance range of the transformed vector. 
 
+\section{Algorithm evaluation}
+
+As with any authentication system, one needs to take into consideration human error or inconsistency during the scanning process. To better illustrate the thought process prior to the formulation of the Algorithm \ref{algorithm: Recursive algorithm to find possible vector combinations}, consider the following example:
+
+\begin{enumerate}[label=\roman*.]
+    \item User A enrols with the transformed hand geometry vector of {50, 60, 70, 80, 90};
+    \item When the user A attempts to authenticate thereafter, his/her hand is not scanned identically due to various factors and the transformed hand geometry vector produced this time is {52, 59, 74, 81, 90}
+    \item Due to the SHA-256 hashing applied to the transformed geometry prior to storage, the match to the value stored within stego-image 2 fails, even though user A has provided the correct PIN.
+    \item In order to provide greater match accuracy, an algorithm was formulated in order to compensate for fault tolerance during scans.
+    \item As seen in Figure \ref{fig:Comparative vector tolerance}, the fault tolerance was variable for a range of 5 for each vector value.
+\end{enumerate}
+
+With a fault tolerance of 5, the probability of finding an exact match for the biometric increases exponentially. Algorithm ~\ref{algorithm: Recursive algorithm to find possible vector combinations} attempts to find a match as efficiently as possible while reducing the amount of false positive matches produced by the system.
+
+Once the scanned vector is passed into this algorithm, the calculations proceed as follows:
+
+\begin{enumerate}[label=\roman*.]
+    \item The original transformed vector is copied and the 1st value is decremented by 1;
+    \item This alteration creates a new vector;
+    \item This vector is then hashed and compared to what is stored in stego-image 2.
+    \item The process repeats itself for each value until the last value in the original vector is decremented by 1;
+    \item The 1st value is then incremented by 1, hashed and compared to what is stored in stego-image 2;
+    \item The process then repeats itself and increases the increment to 2, 3, 4 and 5 respectively;
+    \item If a match is found during this process, the algorithm is halted. If no match is found, the algorithm continues to recursively search for a match until the possible vector combinations are exhausted.
+\end{enumerate}
+
+The above-mentioned process is illustrated below in Algorithm ~\ref{algorithm: Recursive algorithm to find possible vector combinations}.
 % Algorithm - check vector hash combinations
 
 \begin{algorithm}
@@ -102,7 +130,7 @@ Upon further evaluation, with the tolerance range at a maximum of 5mm, the accep
      \Input{$transformedVector$}
      \Output{$result$}
      
-      \tcp{transformedVector, low and high are \textbf{arrays}}
+      \tcp{transformedVector, low and high are \textbf{vectors}}
       $low$;
       $high$;
      
@@ -129,14 +157,17 @@ Upon further evaluation, with the tolerance range at a maximum of 5mm, the accep
      
      return $result$ = \textbf{VectorCombinationsCheck($transformedVector$)}
      
-     
+     \label{algorithm: Recursive algorithm to find possible vector combinations}
      \caption{Recursive algorithm to find possible vector combinations}
 \end{algorithm}
 
+This approach attempts to decrease the false-positive match rates. 
+
+%****************************************************************
 
 \subsection{Overall system evaluation}
 
-As deduced from Figure ~\ref{fig:System tolerance vs acceptance rates}, a zero-tolerance rate resulted in only a 12.5\% true acceptance rate. If this tolerance is then increased, the true acceptance rate also increases (e.g. 97.5\% with a 4mm tolerance) until a 100\% true acceptance rate is obtained at 5mm tolerance. 
+As deduced from Figure ~\ref{fig:System tolerance versus acceptance rates}, a zero-tolerance rate resulted in only a 12.5\% true acceptance rate. If this tolerance is then increased, the true acceptance rate also increases (e.g. 97.5\% with a 4mm tolerance) until a 100\% true acceptance rate is obtained at 5mm tolerance. 
 When considering implementing this particular system approach, one needs to determine what risk factor is suitable within the authentication scenario. If the users that need to be authenticated are to be granted access to sensitive data/areas, then the tolerance range should be adjusted accordingly. The acceptance rate is drastically affected when using the maximum tolerance range. With such a high tolerance range, the false acceptance rate is also dramatically increased, but because of the two-factor authentication provided with the allocated PIN, the users are authenticated correctly.
 
 % Figure - System tolerance vs acceptance rates
@@ -145,20 +176,20 @@ When considering implementing this particular system approach, one needs to dete
     \centering    
     \includegraphics[width=1.0\textwidth]{Chapter4/Figs/Tolerance.png}
     % \includesvg[width=1\textwidth]{Chapter4/SVG/Tolerance-pdf.svg}
-    \caption[System tolerance vs acceptance rates]{System tolerance vs acceptance rates}
-    \label{fig:System tolerance vs acceptance rates}
+    \caption[System tolerance versus acceptance rates]{System tolerance versus acceptance rates}
+    \label{fig:System tolerance versus acceptance rates}
     \end{figure}
 
 
 \section{Discussion}
 
-The proposed technique has revealed several promising advantages by using a combination of the techniques specified in Section II. The LMC was found to be a stable and efficient hand geometry scanner. Also, the steganography techniques used in this paper were relatively easy to implement for use in this particular instance. By using PINs (to implement two-factor authentication) the security is enhanced and aids in achieving cancelability for storing biometrics. The proposed framework ensured that the system provided results that were reliable and efficiently obtained.
-Bearing in mind the abovementioned advantages, one must acknowledge some disadvantages are present when using this approach. This system was only exposed to limited testing and the authentication accuracy and robustness will need to be measured using a formal evaluation. In order to fully explore the system’s functionality, one would have to extensively test the use of this framework on a larger scale. This will form part of the ongoing research.
+The proposed technique has revealed several promising advantages by using a combination of the techniques specified in Chapter 2. The LMC was found to be a stable and efficient hand geometry scanner. Also, the steganography techniques used in this paper were relatively easy to implement for use in this particular instance. By using PINs (to implement two-factor authentication) the security is enhanced and aids in achieving cancelability for storing biometrics. The proposed framework ensured that the system provided results that were reliable and efficiently obtained.
 
+Bearing in mind the above-mentioned advantages, one must acknowledge some disadvantages are present when using this approach. The algorithm to find positive matches slowed down the system. It may be of value to consider the possibility of removing the algorithm in future and alternatively producing a false match, followed by a re-scan. This system was only exposed to limited testing and the authentication accuracy and robustness will need to be measured using a formal evaluation. In order to fully explore the system’s functionality, one would have to extensively test the use of this framework on a larger scale. This will form part of the ongoing research.
 
-
-\section{Algorithm evaluation}
-
-\section{Conclusion}
 
 \section{Chapter summary}
+
+The aim of this chapter was to evaluate the overall system design, performance, accuracy and efficiency. This was done by analysing data extracted during the testing process. Once analysis on that data was complete, the system performance, accuracy and efficiency was measured using simulation tests by removing certain system components. The algorithmic complexity was analysed for optimisation possibilities.
+
+In Chapter 5, the objectives of the study will be presented and discussed. Any problems experienced throughout the study will also be addressed and opportunities that may have come to fruition throughout the research will be discussed for future studies.

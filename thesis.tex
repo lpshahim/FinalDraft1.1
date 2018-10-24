@@ -2,8 +2,7 @@
 % Please have a look at the README.md file for info on how to use the template
 
 % LP added "ONESIDE" or "OPENANY" to remove blank pages
-
-\documentclass[a4paper,12pt,oneside,times,numbered,print,chapter]{Classes/PhDThesisPSnPDF}
+\documentclass[a4paper,12pt,oneside,times,authoryear,print,chapter]{Classes/PhDThesisPSnPDF}
 
 % ******************************************************************************
 % ******************************* Class Options ********************************
@@ -80,7 +79,7 @@
 % Uncomment to change page style
 
 
-% \pagestyle{PageStyleI}
+% \pagestyle{PageStyleII}
 % Preamble: Contains packages and user-defined commands and settings
 \input{Preamble/preamble}
 
@@ -134,6 +133,7 @@
 \listoftables
 
 \listofalgorithms
+\addcontentsline{toc}{chapter}{List of Algorithms}
 
 % \printnomenclature[space] space can be set as 2em between symbol and description
 % \printnomenclature[3em]
@@ -164,7 +164,7 @@
 % Bibliography style previews: http://nodonn.tipido.net/bibstyle.php
 % Reference styles: http://sites.stat.psu.edu/~surajit/present/bib.htm
 
-\bibliographystyle{apalike}
+\bibliographystyle{agsm}
 % \bibliographystyle{unsrt} % Use for unsorted references  
 % \bibliographystyle{plainnat} % use this to have URLs listed in References
 \cleardoublepage
@@ -190,11 +190,10 @@
 
 \include{Appendix1/appendix1}
 \include{Appendix2/appendix2}
-\include{Appendix2/appendix3}
+% \include{Appendix2/appendix3}
 
 \end{appendices}
 
 % *************************************** Index ********************************
 \printthesisindex % If index is present
-
 \end{document}
