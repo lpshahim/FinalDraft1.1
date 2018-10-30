@@ -8,7 +8,7 @@
 
 \section{Introduction}
 
-In an attempt to quantify the performance of the proposed system, a threefold evaluation was instantiated and conducted. This is presented in terms of the consistency of the LMC, followed by a comparative vector tolerance analysis and finally, the overall system accuracy. Thereafter a discussion is presented. The following evaluation and discussion are based on sample data that was collected through the scanning (enrolment and authentication) of forty candidates.
+In an attempt to quantify the performance of the proposed system, a threefold evaluation was instantiated and conducted. This is presented in terms of the consistency of the LMC, followed by a comparative vector tolerance analysis and finally, the overall system accuracy. Thereafter a discussion is presented. The following evaluation and discussion are based on sample data that was collected through the scanning (enrolment and authentication) of forty unique candidates.
 
 \section{Testing methodology}
 
@@ -41,10 +41,10 @@ In order to successfully simulate the authentication process, the following step
 With the core functionality of the proposed system being to successfully transform and authenticate users, the efficiency is seen to be slightly lacking. As the above Figure \ref{fig:Simulation for time taken to authenticate users} shows, the algorithm used to find the authentication match within the threshold tolerance range of 5 affects the speed at which a user can be authenticated. A simple and effective solution to this drawback of obtaining a successful match may be to place an upper limit on the time that the algorithm is allowed to scan for a match for. This upper limit can be deduced from the average time taken to authenticate all forty users of 6,65s. 
 
 
-\subsection{LMC performance evaluation}
+\subsection{Leap Motion Controller performance evaluation}
 
 To illustrate the efficiency and reliability of the LMC, the data that was collected from one randomly selected, five second hand geometry scan is presented in both Table~\ref{table: Randomly selected data from five second scan} and Figure~\ref{fig:Five Second hand scan graph} below. 
-In order to present a visualisation with a high enough resolution to be able to see the variance in the scan readings, only the three fingers most similar in length are shown (i.e., the index, middle, and ring fingers). 
+In order to present a visualisation with a high enough resolution to be able to see the variance in the scan readings, only the three fingers most similar in length are shown in Figure~\ref{fig:Five Second hand scan graph}(i.e., the index, middle, and ring fingers). 
 
 % Table - Data from One, 5 second hand geometry scan
     
@@ -105,7 +105,7 @@ As with any authentication system, one needs to take into consideration human er
     \item As seen in Figure \ref{fig:Comparative vector tolerance}, the fault tolerance was variable for a range of 5 for each vector value.
 \end{enumerate}
 
-With a fault tolerance of 5, the probability of finding an exact match for the biometric increases exponentially. Algorithm~\ref{algorithm: Recursive algorithm to find possible vector combinations} attempts to find a match as efficiently as possible while reducing the amount of false positive matches produced by the system.
+With a fault tolerance of 5mm, the probability of finding an exact match of the stored biometric increases exponentially. Algorithm~\ref{algorithm: Recursive algorithm to find possible vector combinations} attempts to find a match as efficiently as possible while reducing the amount of false positive matches produced by the system.
 
 Once the scanned vector is passed into this algorithm, the calculations proceed as follows:
 
@@ -167,8 +167,8 @@ This approach attempts to decrease the false-positive match rates.
 
 \subsection{Overall system evaluation}
 
-As deduced from Figure~\ref{fig:System tolerance versus acceptance rates}, a zero-tolerance rate resulted in only a 12.5\% true acceptance rate. If this tolerance is then increased, the true acceptance rate also increases (e.g. 97.5\% with a 4mm tolerance) until a 100\% true acceptance rate is obtained at 5mm tolerance. 
-When considering implementing this particular system approach, one needs to determine what risk factor is suitable within the authentication scenario. If the users that need to be authenticated are to be granted access to sensitive data/areas, then the tolerance range should be adjusted accordingly. The acceptance rate is drastically affected when using the maximum tolerance range. With such a high tolerance range, the false acceptance rate is also dramatically increased, but because of the two-factor authentication provided with the allocated PIN, the users are authenticated correctly.
+As deduced from Figure~\ref{fig:System tolerance versus acceptance rates}, a 0mm tolerance rate resulted in only a 12.5\% true acceptance rate. If this tolerance is then increased, the true acceptance rate also increases (e.g. 97.5\% with a 4mm tolerance) until a 100\% true acceptance rate is obtained at 5mm tolerance. 
+When considering implementing this particular system approach, one needs to determine what risk factor is suitable within the authentication scenario. If the users that need to be authenticated are to be granted access to sensitive data/areas, then the tolerance range should be adjusted accordingly. The acceptance rate is drastically affected when using the maximum tolerance range. With such a high tolerance range, the false acceptance rate is also dramatically increased, but because of the two-factor authentication provided with the allocated PIN, the users are authenticated correctly and no inter-user error is observed where one user is authenticated as another.
 
 % Figure - System tolerance vs acceptance rates
     
@@ -185,11 +185,11 @@ When considering implementing this particular system approach, one needs to dete
 
 The proposed technique has revealed several promising advantages by using a combination of the techniques specified in Chapter 2. The LMC was found to be a stable and efficient hand geometry scanner. Also, the steganography techniques used in this paper were relatively easy to implement for use in this particular instance. By using PINs (to implement two-factor authentication) the security is enhanced and aids in achieving cancelability for storing biometrics. The proposed framework ensured that the system provided results that were reliable and efficiently obtained.
 
-Bearing in mind the above-mentioned advantages, one must acknowledge some disadvantages are present when using this approach. The algorithm to find positive matches slowed down the system. It may be of value to consider the possibility of removing the algorithm in future and alternatively producing a false match, followed by a re-scan. This system was only exposed to limited testing and the authentication accuracy and robustness will need to be measured using a formal evaluation. In order to fully explore the system’s functionality, one would have to extensively test the use of this framework on a larger scale. This will form part of the ongoing research.
+Bearing in mind the above-mentioned advantages, some disadvantages are present when using this approach. The algorithm to find positive matches slowed down the system. It may be of value to consider the possibility of removing the algorithm in future and alternatively producing a false match, followed by a re-scan. This system was only exposed to limited testing and the authentication accuracy and robustness will need to be measured using a formal evaluation. In order to fully explore the system’s functionality, extensive tests should be conducted upon this framework on a larger scale. This will form part of the ongoing research.
 
 
 \section{Chapter summary}
 
 The aim of this chapter was to evaluate the overall system design, performance, accuracy and efficiency. This was done by analysing data extracted during the testing process. Once analysis on that data was complete, the system performance, accuracy and efficiency was measured using simulation tests by removing certain system components. The algorithmic complexity was analysed for optimisation possibilities.
 
-In Chapter 5, the objectives of the study will be presented and discussed. Any problems experienced throughout the study will also be addressed and opportunities that may have come to fruition throughout the research will be discussed for future studies.
+In Chapter 5, the objectives of the study will be revisited and discussed. Any problems experienced throughout the study will also be addressed and opportunities that may have come to fruition throughout the research will be discussed for future studies.
