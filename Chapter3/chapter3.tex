@@ -75,7 +75,7 @@ With the functionality of the final authentication system established, the incre
     
 	
 The development process will be discussed in more detail regarding each increment and its iterations.
-By using these requirements to guide the development process, the first increment was instantiated by attempting to learn how the leap motion controller can be used to extract more information regarding a user’s hand. For this, the developer documentation was consulted regarding the setup thereof.
+By using these requirements to guide the development process, the first increment was instantiated by attempting to learn how the leap motion controller can be used to extract more information regarding a user’s hand. For this, the developer documentation \footnote{https://developer.leapmotion.com/documentation/} was consulted regarding the setup thereof.
 
 \section{Proposed framework}
 
@@ -97,25 +97,27 @@ In order to generate stego-images for sensitive information storage, one needs t
 
 \section{System development process}
 
+The next section attempts to outline the process that was followed throughout the development of the proposed framework for the biometric authentication system. This is based on the objectives mentioned in Chapter 1, as well as, the iterations mentioned earlier in this chapter.
 
 \subsection{Development using the Leap Motion Controller}
 
 As seen in Figure~\ref{fig:System structure flowchart}, the overall system structure flow is initiated through the feature extraction through the use of a sensor. In this particular study, the sensor refers to the Leap Motion Controller. To successfully extract features from the user, the LMC needs to be set up according to the particular environment that will be used throughout the development. 
 
-The environment chosen for the study was based on prior knowledge, the level of support documentation provided by Leap Motion and available resources in order to minimize the amount of time taken to learn and adapt to novelties. 
+The environment chosen for the study was based on prior knowledge, the level of support documentation provided by Leap Motion and available resources in order to minimise the amount of time taken to learn and adapt to novelties. 
 
-\subsubsection{LMC development environment}
+\subsubsection{Leap Motion Controller development environment}
 
 In order to reiterate the manner within which the LMC functions, one should refer to the API documentation for reference. For the purposes of feature extraction regarding the peripheral device, the hand detection can be summarised as follows:
 
 Distance recorded by the LMC is measured in millimetres. 
-To successfully extract accurate measurements pertaining to each individual hand that is presented to the LMC a Cartesian coordinate system is employed. 	This particular coordinate system manages to specify the various planes associated to the X, Y and Z-axes with regards to their orientation relative to the LMC device. This can be seen in Figure~\ref{fig:LMC device structure and orientation}. 
+To successfully extract accurate measurements pertaining to each individual hand that is presented to the LMC a Cartesian coordinate system is employed. 	This particular coordinate system manages to specify the various planes associated to the X, Y and Z-axes with regards to their orientation relative to the LMC device. This can be seen in Figure~\ref{fig:LMC device structure and orientation}\footnote{https://developer-archive.leapmotion.com/documentation/csharp/devguide/Leap_Overview.html}. 
 
 % Figure - Randomly generated image versus stego-image
     
     \begin{figure}[htbp!] 
     \centering    
-    \includegraphics[width=1.0\textwidth]{Chapter3/Figs/Figure3-5.png}
+    % \includegraphics[width=1.0\textwidth]{Chapter3/Figs/Figure3-5.png}
+    \includesvg[width=1\textwidth]{Chapter3/SVG/Figure3-5.svg}
     \caption[LMC device structure and orientation]{LMC device structure and orientation}
     \label{fig:LMC device structure and orientation}
     \end{figure}
@@ -123,7 +125,7 @@ To successfully extract accurate measurements pertaining to each individual hand
 
 The LMC generates infrared light, along with the use of optical sensors that originate directly from the centre, on top of the device. The Y-axis directs the sensors upwards and provides values that are incremented positively, contrasting to the downward orientation of the majority of computer graphics coordinate systems. The X and Z-axes lie on the horizontal plane of the LMC device with the X-axis positioned along the horizontal face of the device. The Z-axis provides positive values that increment toward the user. 
 
-To provide further context as to how the LMC will be used to extract useful biometric information relating to the presented user hand, the following architecture allows a visual representation of the measurements that will be extracted during a scan. It is important to note that the LMC is capable of extracting far more information than what will be used in this particular study. The information and measurements relevant to this study include (and are limited to) the following information that can all be obtained from within the Hand object. The Hand object can further drill down into Finger objects. These Finger objects can then provide more information depending on the finger type. Each finger type then provides Bone objects that list the bone type correlating to the specific finger type. From those bone types, one is then able to measure those particular bones.  As provided by the developer API documentation on Leap Motion’s website, Figure~\ref{fig:LMC presented hand objects during extraction} provides a visual representation of how the hand object can be matched to suit the needs of this study.
+To provide further context as to how the LMC will be used to extract useful biometric information relating to the presented user hand, the following architecture allows a visual representation of the measurements that will be extracted during a scan. It is important to note that the LMC is capable of extracting far more information than what will be used in this particular study. The information and measurements relevant to this study include (and are limited to) the following information that can all be obtained from within the Hand object. The Hand object can further drill down into Finger objects. These Finger objects can then provide more information depending on the finger type. Each finger type then provides Bone objects that list the bone type correlating to the specific finger type. From those bone types, one is then able to measure those particular bones.  As provided by the developer API documentation on Leap Motion’s website, Figure~\ref{fig:LMC presented hand objects during extraction} \footnote{https://developer-archive.leapmotion.com/documentation/csharp/devguide/Leap_Overview.html} provides a visual representation of how the hand object can be matched to suit the needs of this study.
 
 % Figure - Randomly generated image versus stego-image
     
@@ -171,36 +173,45 @@ In Figure~\ref{fig:LMC presented hand objects during extraction}, it is relevant
     
 With the guidance of the API documentation provided by Leap Motion, it is possible to classify all of the necessary information into a model that is easier to understand during the development process. 
 
-With the use of the above table, it was evident what the class hierarchy would have to be in order to successfully implement the extraction of hand geometry measurements. The information would then be further classified using a Unified Modeling Language to visualise the object structure to be used in the extraction algorithm.
+With the use of the above table, it was evident what the class hierarchy would have to be in order to successfully implement the extraction of hand geometry measurements. The information would then be further classified using a Unified Modeling Language to visualise the object structure to be used in the extraction algorithm. Figure \ref{fig:UML object structure} represents the proposed object structure.
+
+% Figure - UML
+    
+    \begin{figure}[htbp!] 
+    \centering    
+    \includegraphics[width=8cm,height=9cm,keepaspectratio]{Chapter3/Figs/Object_Diagram.png}
+    \caption[UML object structure]{UML object structure}
+    \label{fig:UML object structure}
+    \end{figure}
 
 Once the model has been set out and the measurements have been extracted from the presented user hand one can then prepare the extracted biometric for transformation. However, prior to transformation, where the biometric will be stored must be considered and what the template will be. For this preparation for storage is done using steganographic techniques. In the following section, the stego-image’s and how they were generated will be discussed.
 
-\renewcommand{\umltextcolor}{black}
-\renewcommand{\umldrawcolor}{black}
-\renewcommand{\umlfillcolor}{white}
+% \renewcommand{\umltextcolor}{black}
+% \renewcommand{\umldrawcolor}{black}
+% \renewcommand{\umlfillcolor}{white}
 
-\begin{center}
-\begin{tikzpicture}
+% \begin{center}
+% \begin{tikzpicture}
 
-\begin{class}{ Hand }{0 ,0}
-    \attribute{ isRight : Bool }
-    \operation{ CheckHand (  )}
-\end{class}
+% \begin{class}{ Hand }{0 ,0}
+%     \attribute{ isRight : Bool }
+%     \operation{ CheckHand (  )}
+% \end{class}
 
-\begin{class}{ Finger }{ 0 , -5}
-    \inherit{ Hand }
-    \attribute{ fingerType : String }
-    \operation{ CheckFingerType ( )}
-\end{class}
+% \begin{class}{ Finger }{ 0 , -5}
+%     \inherit{ Hand }
+%     \attribute{ fingerType : String }
+%     \operation{ CheckFingerType ( )}
+% \end{class}
 
-\begin{class}{ Bone }{0 , -10}
-    \inherit{ Finger }
-    \attribute{ boneType : String }
-    \operation{ CheckBoneType ( ) }
-\end{class}
+% \begin{class}{ Bone }{0 , -10}
+%     \inherit{ Finger }
+%     \attribute{ boneType : String }
+%     \operation{ CheckBoneType ( ) }
+% \end{class}
 
-\end{tikzpicture}
-\end{center}
+% \end{tikzpicture}
+% \end{center}
 
 
 To aid the development process, Leap Motion has presumed the thumb metacarpal to have a length of 0.
@@ -286,7 +297,7 @@ For each of the bones, in each of the fingers, on each of the hands, the measure
     \For{$value$ in $measurements$}{
         $measurementAverage$ += value;
     }
-    $measurementAverage$ = \textit{RoundToNearestZero($measurementAverage/counter$)};
+    $measurementAverage$ = \textit{RoundToNearestInteger($measurementAverage/counter$)};
     
     \For{$measurementAverage$ in $HandGeometryMeasurements$}{
     
@@ -366,7 +377,7 @@ Initially, the random 4-digit PINs needed to be generated and mapped to the corr
 
 Firstly, stego-image 1 would contain the random 4-digit PINs after they had been hashed using the SHA-256 algorithm that was discussed in Chapter 2. The calculations went as follows:
 The SHA-256 algorithm, as the name implies, produces a hash value consisting of 256bits. 
-By using this algorithm for each of the PINs, one would have to specify what the bits per pixel (bpp) would have to be for each of the pixels within the stego-image. It was decided that 32bpp would be acceptable to use. 
+By using this algorithm for each of the PINs, one would have to specify what the bits per pixel (bpp) would have to be for each of the pixels within the stego-image. It was decided that 32bpp would be acceptable to use. This is due to the fact that the hashed values would suit this image format in terms of storage capacity.
 
 Typically, what the bpp does is determine the number of colours that can be stored within an image. This number of colours that are in an image depend on the bpp value. This value grows exponentially. An example of this would be: 
 
@@ -405,7 +416,7 @@ Furthermore, as seen in Algorithm~\ref{alg: Create 4-digit user PINs}, the value
 %******************************************************************
 The importance of generating the 4-digit PINs randomly and assigning the users with these PINs is to provide better suited mapping capabilities. If this system were to be scaled, it could easily be done by simply generating 5-digit PINs which would take the total number of users that the system could handle from 9000 to 90000.
 
-When generating the 4-digit PINs that will be allocated to the users it is imperative that there following criteria are met:
+When generating the 4-digit PINs that will be allocated to the users it is imperative that there following criteria are met:\\
 
 \begin{enumerate}[label=\roman*.]
     \item No repeating PINs;
@@ -420,7 +431,7 @@ When generating the 4-digit PINs that will be allocated to the users it is imper
 
 Due to the above-mentioned criteria, the PINs carry larger weight when applying them as multifactor authentication to the user along with his/her biometric. 
 
-As described above, to meet the criteria for the PINs, it was decided to use PINs that start with 1. By doing so the number of PINs decreases from a possible 10000 to 9000. It was found uncommon for users to use PINs that start with a zero. 
+As described above, to meet the criteria for the PINs, it was decided to use PINs that start with 1. By doing so the number of PINs decreases from a possible 10000 to 9000. 
 
 The number of unique PINs can be verified using the following formula:
 \begin{gather}
@@ -488,7 +499,7 @@ Initially, stego-image 2 is generated as a blank image with zero values for each
 
 \subsection{Stego-image contextualisation}
 
-An image can be seen as a two-dimensional matrix that is made up of pixels containing information about the colours within each particular pixel. This pixel information can be used to store sensitive biometric information. Using steganography techniques to store the transformed biometric models in an image involves that in order to store these models, each models’ bit-data would have to be processed. All electronic information is essentially made up of 1’s and 0’s (or bits). This means that the models that are generated need to be manipulated in such a manner that each user model’s bit data can be extracted for processing thereof. Once this bit data is processed, it can then be stored within an image to correspond to a particular user. 
+An abstraction of what an image can be seen as is a two-dimensional matrix that is made up of pixels containing information about the colours within each particular pixel. This pixel information can be used to store sensitive biometric information. Using steganography techniques to store the transformed biometric models in an image involves that in order to store these models, each models’ bit-data would have to be processed. All electronic information is essentially made up of 1’s and 0’s (or bits). This means that the models that are generated need to be manipulated in such a manner that each user model’s bit data can be extracted for processing thereof. Once this bit data is processed, it can then be stored within an image to correspond to a particular user. 
 
 With two-factor authentication being applied, both the PIN and the hand geometry need to be stored. Using one image to store the PIN, the system can then use the stored PIN to enrol/locate a user in a second image. This can be likened to a one-to-one relational database model. To illustrate this concept, Table II shows how PIN information in the first image can be used to correspond to the hand geometry stored in the second image. For instance, in the first block of Table II, the bold number (1) represents the user ID slot number while 3648 is the user PIN. The corresponding slot in the second stego-image is then used as the storage location for the user hand geometry data.
 
@@ -532,7 +543,7 @@ With two-factor authentication being applied, both the PIN and the hand geometry
 
 %******************************************************************************************
 
-In order to standardize the amount of data that can be used to store information within the pixels, the system uses 32bpp (bits per pixel) image formatting. This ensures that within each pixel of the image, 32 bits of information can be held. These 32 bits are made up of A (8 bits), R (8 bits), G (8 bits), and B (8 bits) values. Due to the fact that the number of bits used to store a 4-digit PIN would vary depending on the value, it was decided to also standardize the number of bits used during PIN storage per user. To do so, a hash-function is used \citep{Kashyap2016}. 
+In order to standardise the amount of data that can be used to store information within the pixels, the system uses 32bpp (bits per pixel) image formatting. This ensures that within each pixel of the image, 32 bits of information can be held. These 32 bits are made up of A (8 bits), R (8 bits), G (8 bits), and B (8 bits) values. Due to the fact that the number of bits used to store a 4-digit PIN would vary depending on the value, it was decided to also standardise the number of bits used during PIN storage per user. To do so, a hash-function is used \citep{Kashyap2016}. 
 The hash-function ensures that regardless of what the PIN is, the length of the hash representation will be similar. A SHA256 (Secure Hashing Algorithm 256-bit) function was chosen. This is because it is the successor of SHA1, which was compromised \citep{Brandom}, and addresses the issues prevalent in SHA1.
 Each PIN is made up of 256-bits (8 pixels, if one pixel = 32bpp), leading to 8 pixels to store user their information within both images. Referring back to the earlier statement of using two images with a one-to-one relationship, a user PIN can be mapped and correlated directly to the hand geometry in the second image using the hash function prior to enrolling the user.
 
@@ -551,27 +562,9 @@ In order to gain a better understanding of how the system operates, the pseudo-c
 
 \subsection{Cancelable biometric development}
 
-%Algorithm - Transform algorithm
+The SHA-256 algorithm was discussed in detail in Chapter 2. However, it has been revisited here in Algorithm~\ref{alg: Generate hash algorithm} for completeness in order to provide context for how the bytes will be stored within the stego-images.
 
-\begin{algorithm}
-     \SetKwInOut{Input}{Input}
-     \SetKwInOut{Output}{Output}
-     
-     \underline{function TransformVector}($ArrayOfMeasurements$)\;
-     \Input{$ArrayOfMeasurements$}
-     \Output{$transformed vector$}
-     
-     \For{$measurementAverage$ in $ArrayOfMeasurements$}{
-        $transformedVector$ += $measurementAverage$\; 
-        \tcp{Aggregated measurements for this example} 
-     }
-     
-     return $transformedVector$\;
-     \caption{Transform algorithm}
-     \label{alg: Transform algorithm}
-     
-\end{algorithm}
-
+What Algorithm~\ref{alg: Generate hash algorithm} does is prepare the transformed vector for storage within stego-image 2 by returning bytes of data that are irreversible and safely secured.
 
 %Algorithm - Generate Hash Algorithm
 \begin{algorithm}
@@ -596,13 +589,37 @@ In order to gain a better understanding of how the system operates, the pseudo-c
      
 \end{algorithm}
 
+The transformed vector that is passed into this function comes in the form of a text representation subsequent to the extraction scan that takes place from the LMC device. This will be further demonstrated in the following section that discusses the illustrative example. However, Algorithm~\ref{alg: Transform algorithm} revisits the simple transformation that occurs after the hand has successfully been scanned by the LMC and the measurements have been extracted. 
+
+%Algorithm - Transform algorithm
+
+\begin{algorithm}
+     \SetKwInOut{Input}{Input}
+     \SetKwInOut{Output}{Output}
+     
+     \underline{function TransformVector}($ArrayOfMeasurements$)\;
+     \Input{$ArrayOfMeasurements$}
+     \Output{$transformed vector$}
+     
+     \For{$measurementAverage$ in $ArrayOfMeasurements$}{
+        $transformedVector$ += $measurementAverage$\; 
+        \tcp{Aggregated measurements for this example} 
+     }
+     
+     return $transformedVector$\;
+     \caption{Transform algorithm}
+     \label{alg: Transform algorithm}
+     
+\end{algorithm}
+
+
+
+
 %******************************************************************
     %generate hash output explanation
 %******************************************************************
 
-The SHA-256 algorithm was discussed in detail in Chapter 2. However, it has been revisited here for completeness in order to provide context for how the bytes will be stored within the stego-images. 
 
-The transformed vector that is passed into this function comes in the form of a text representation subsequent to the extraction scan that takes place from the LMC device. This will be further demonstrated in the following section that discusses the illustrative example.
 
 
 \subsection{Pseudocode for system algorithm}
@@ -667,7 +684,7 @@ Advantages of the proposed system include:
 The disadvantages include: 
     \begin{enumerate}[label=\roman*.]
         \item The technology is still in its infancy and is not mature;
-        \item While system performance for authentication is expected to be high for small organizations, it may pose a problem should more users need to be enrolled; and finally
+        \item While system performance for authentication is expected to be high for small organisations, it may pose a problem should more users need to be enrolled; and finally
         \item Error incidence due to changes in a person’s hands due to injury, old age, or illness.
     \end{enumerate}
 
@@ -717,7 +734,7 @@ Figure~\ref{fig:Randomly generated image versus stego-image} provides a comparat
     \label{fig:Randomly generated image versus stego-image}
     \end{figure}
 
-The image on the left was randomly generated, while the image on the right contains sensitive biometric information. To the human eye one cannot easily infer that these two images differ, however, upon closer inspection one may realize differing colour mappings but cannot differentiate between sensitive data and just another randomly generated image.
+The image on the left was randomly generated, while the image on the right contains sensitive biometric information. To the human eye one cannot easily infer that these two images differ, however, upon closer inspection one may realise differing colour mappings but cannot differentiate between sensitive data and just another randomly generated image.
 
 Ultimately, cancelability can be concluded due to the biometric information being transformed and obscured prior to storage. This means that should an attacker find these two images in a compromised system, he/she will not know what information was used to generate these images, nor how the information was transformed prior to storage. In fact, without prior knowledge he/she will not even know to expect hidden data in said images.
 

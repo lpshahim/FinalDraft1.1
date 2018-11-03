@@ -69,7 +69,7 @@ The above-mentioned approaches differ in performance, accuracy and security. Dep
 	This approach involves the use of a non-invertible function that is applied to the biometric template. By applying this function, stored templates can be updated when transform parameters are modified \citep{Piciucco2016,Rathgeb2011}. Therefore, security is increased due to the inability to reconstruct the biometric data even though transforms may have been compromised. With this advantage comes an equal and opposite disadvantage. A loss of accuracy and a performance decrease is the disadvantageous result thereof. This is due to transformed biometric templates becoming laborious in comparison processing, which ultimately provides fewer biometric results to process during matching (thus, influencing the accuracy thereof).
 	
 	\subsection{Biometric salting}
-	Biometric salting commonly involves biometric template transforms that are preferred invertible as opposed to the non-invertible approach (mentioned above). The term “salting” refers to the act of merging specific data (such as passwords) with unique random values (“salt”) in order to make all of the original data distinct \citep{SyedAhmad2012}. In this particular context, this technique may be applicable when a 4-digit PIN is used as the salt to be combined with the hand geometry vector prior to hashing the combination of data. This means that regardless of what biometric feature vector is chosen, the biometric template extraction cannot be reconstructed to the original biometric template \citep{Paul2014,Rathgeb2011}. This commands that transform parameters have to remain private. Variations of the approach may appear if user-specific transforms are applied. However, this demands that each authentication attempt requires transform parameters which may result in discrepancies if attackers successfully attain transform parameters. Ultimately, a decrease in performance is likely if the system implementation does not contain efficient biometric algorithms with high accuracy regarding private transform parameters. In contrast to non-invertible transforms, this approach maintains high recognition performance, however, the latter excels in terms of security \citep{Radha2011, Rathgeb2011}.
+	Biometric salting commonly involves biometric template transforms that are preferred invertible as opposed to the non-invertible approach (mentioned above). The term “salting” refers to the act of merging specific data (such as passwords) with unique random values (“salt”) in order to make all of the original data distinct \citep{SyedAhmad2012}. In this particular context, this technique may be applicable when a 4-digit PIN is used as the salt to be combined with the hand geometry vector prior to hashing the combination of data. This means that regardless of what biometric feature vector is chosen, the biometric template extraction cannot be reconstructed to the original biometric template \citep{Paul2014,Rathgeb2011}. This commands that transform parameters have to remain private. Variations of the approach may appear if user-specific transforms are applied \citep{teoh2008cancellable}. However, this demands that each authentication attempt requires transform parameters which may result in discrepancies if attackers successfully attain transform parameters. Ultimately, a decrease in performance is likely if the system implementation does not contain efficient biometric algorithms with high accuracy regarding private transform parameters. In contrast to non-invertible transforms, this approach maintains high recognition performance, however, the latter excels in terms of security \citep{Radha2011, Rathgeb2011}.
 
 
 
@@ -143,7 +143,7 @@ The CB system structure is closely related to that of the BCS structure, however
 
     \subsection{ Secure Hashing Algorithm}
     
-    Cryptographic hash functions are designed to block malicious attempts of data modification \citep{Pfleeger2015}. The National Institute of Standards and Technology (NIST) is responsible for publishing the Secure Hash Standard (SHS) and is implemented in an attempt to overcome various attacks. 
+    Cryptographic hash functions are designed to block malicious attempts of data modification \citep{Pfleeger2015}. The National Institute of Standards and Technology (NIST), as a part of the U.S. Department of Commerce, is responsible for publishing the Secure Hash Standard (SHS) and is implemented in an attempt to overcome various attacks. 
     
     The term Secure Hashing Algorithm (SHA) is used to describe the above-mentioned standard that can be further divided into four specific algorithms, namely SHA-0, -1, -2, and -3. The purpose of such an algorithm is to compute electronic data in a manner that produces a condensed representation of a message \citep{Foti2015}. The aforementioned representation is commonly known as a “message digest” or “hash.” The length of this message digest remains constant, regardless of the length of the original electronic input data. The algorithmic process that is followed (by all four algorithms as seen below) is one that is both iterative, as well as, unidirectional. By processing electronic data in such a manner, the algorithm ensures the integrity thereof. This is because in the event that the original data should be altered in the slightest, the resulting message digest will be completely contrasting to the message digest of the original data. 
     
@@ -213,7 +213,7 @@ The CB system structure is closely related to that of the BCS structure, however
         \label{table: SHA phases}
     \end{table}
     
-    The entire SHA-2-256 algorithm can be summarized using the following set of equations.
+    The entire SHA-2-256 algorithm can be summarised using the following set of equations.
     
     % SHA Equations 
     
@@ -225,7 +225,7 @@ The CB system structure is closely related to that of the BCS structure, however
                         \end{cases}\]
  
         
-        \item Initialise the 8 working variables, a, b, c, d, e, f, g and h, containing hash values for (i-1): 
+        \item Initialise the 8 working variables, \textit{a, b, c, d, e, f, g} and \textit{h}, containing hash values for (i-1): 
             \begin{gather*}     
                 a = H^{(i-1)}_0, b = H^{(i-1)}_1, c = H^{(i-1)}_2, d = H^{(i-1)}_3, \\
                 e = H^{(i-1)}_4, f = H^{(i-1)}_5, g = H^{(i-1)}_6, h = H^{(i-1)}_7 
@@ -352,13 +352,13 @@ The CB system structure is closely related to that of the BCS structure, however
             
         \begin{table}[h]
         \caption{Initial hashes and K-Constants}
-        \begin{tabular}{{|p{0.2\textwidth} | p{0.80\textwidth}|}}
+        \begin{tabular}{{|p{0.2\textwidth} | p{0.8\textwidth}|}}
           \hline
          \textbf{Initial hashes} & \textbf{K-Constants} \\
          \hline\hline
             \rule{0pt}{4ex}
-                H(0) = a09e667 & 428a2f98 71374491 b5c0fbcf e9b5dba5 3956c25b 59f111f1 923f82a4 \\
-                H(1) = b67ae85 & ab1c5ed5 d807aa98 12835b01 243185be 550c7dc3 72be5d74 80deb1fe \\
+                H(0) = a09e667  & 428a2f98 71374491 b5c0fbcf e9b5dba5 3956c25b 59f111f1 923f82a4 \\
+                H(1) = b67ae85  & ab1c5ed5 d807aa98 12835b01 243185be 550c7dc3 72be5d74 80deb1fe \\
                 H(2) = 3c6ef372 & 9bdc06a7 c19bf174 e49b69c1 efbe4786 0fc19dc6 240ca1cc 2de92c6f \\
                 H(3) = a54ff53a & 4a7484aa 5cb0a9dc 76f988da 983e5152 a831c66d b00327c8 bf597fc7 \\
                 H(4) = 510e527f & c6e00bf3 d5a79147 06ca6351 14292967 27b70a85 2e1b2138 4d2c6dfc \\
@@ -372,9 +372,9 @@ The CB system structure is closely related to that of the BCS structure, however
         \label{table:Initial hashes and K-Constants}
         \end{table}
        
-        To get T1, use the value of \textit{e} and create three new words by right rotating by 6. 11 and 25. Then do an XOR on these values. Then run the Choose function of \textit{e, f and g}. Get the first \textit{K} constant, the value of \textit{h} and the 1st word from the message scheduler and calculate the AND of all of these. 
+        To get T1, use the value of \textit{e} and create three new words by right rotating by 6. 11 and 25. Then do an XOR on these values. Then run the Choose function of \textit{e, f} and \textit{g}. Get the first \textit{K} constant, the value of \textit{h} and the 1st word from the message scheduler and calculate the AND of all of these. 
         
-        To get T2, run the Majority function over \textit{a, b and c}. Then create 3 new words by right rotating \textit{a} by 2, 13 and 22. Then get the XOR of all of these and swap and modify the values as seen in the function.  
+        To get T2, run the Majority function over \textit{a, b} and \textit{c}. Then create 3 new words by right rotating \textit{a} by 2, 13 and 22. Then get the XOR of all of these and swap and modify the values as seen in the function.  
         
         This process is then repeated 64 times. 
         
@@ -389,7 +389,7 @@ The CB system structure is closely related to that of the BCS structure, however
         An example of a message digest can be seen when hand geometry measurements that have undergone transforms produce an initial output (prior to hashing) of: 
 
         \begin{center}
-            \textbf{\textit{11,12,13,14,15}}
+            \textbf{\textit{11, 12, 13, 14, 15}}
         \end{center}
         
         By using the SHA-1 hash algorithm, one sees a message digest (160 bits) of:
@@ -408,7 +408,7 @@ The CB system structure is closely related to that of the BCS structure, however
 
 Ultimately, this message digest would then be stored rather than the plaintext of the original data.
 
-To conclude this subsection, the aim is to combine the key-binding capabilities of a BCS, the secure hashing algorithm and the biometric salting of CB. Once the user-specific biometric information has been transformed and is secure, it is ready for storage. In order to store this sensitive biometric information, rather than using a conventional database (due to its vulnerabilities, i.e. username/password exploits) a technique known as steganography was utilized and is described in the next section. 
+To conclude this subsection, the aim is to combine the key-binding capabilities of a BCS, the secure hashing algorithm and the biometric salting of CB. Once the user-specific biometric information has been transformed and is secure, it is ready for storage. In order to store this sensitive biometric information, rather than using a conventional database (due to its vulnerabilities, i.e. username/password exploits) a technique known as steganography was utilised and is described in the next section. 
 
 
 \section[Steganography]{Steganography}

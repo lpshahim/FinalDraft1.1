@@ -14,7 +14,8 @@ In an attempt to quantify the performance of the proposed system, a threefold ev
 
 %****************************************************************
 
-In testing the system, it was decided that a simulation should be initiated in order to determine the reliability and efficiency of the system by eliminating the LMC. This was done due to the device's lack of customisability. As the system stored the transformed biometric data of the forty users within stego-image 2, the simulation would attempt to authenticate only the user data that was extracted during enrolment and authentication phases. 
+In testing the system, it was decided that a simulation should be initiated in order to determine the reliability and efficiency of the system by eliminating the LMC. This was done due to the device's lack of customisability. 
+The simulation attempts to control the aspects of the system that can be controlled. The LMC as a peripheral device is bound by the hardware and software capabilities that are controlled by external sources. For this reason, the simulation would eliminate the LMC component of the proposed authentication system and use only the extracted data to test the algorithm efficiency. As the system stored the transformed biometric data of the forty users within stego-image 2, the simulation would attempt to authenticate only the user data that was extracted during enrolment and authentication phases. 
 
 In order to successfully simulate the authentication process, the following steps would need to be conducted: 
 
@@ -67,11 +68,11 @@ In order to present a visualisation with a high enough resolution to be able to 
     \centering    
     \includegraphics[width=1.0\textwidth]{Chapter4/Figs/Consistency.png}
     % \includesvg[width=0.8\textwidth]{Chapter4/Figs/Figure1.svg}
-    \caption[Five Second hand scan graph]{Five Second hand scan graph}
+    \caption[Five Second hand scan]{LMC readings for a five Second hand scan }
     \label{fig:Five Second hand scan graph}
     \end{figure}
     
-The significance of this data is prevalent when taking into consideration the distribution throughout the scan. It is of utmost importance to conistently extract concise data readings throughout the length of the scan. Thus, the standard deviation of the raw data correlating to the plotted data was calculated in an attempt to demonstrate the accuracy that the LMC provides (see Table~\ref{table: Randomly selected data from five second scan}).
+The significance of this data is prevalent when taking into consideration the distribution throughout the scan. It is of utmost importance to consistently extract concise data readings throughout the length of the scan. Thus, the standard deviation of the raw data correlating to the plotted data was calculated in an attempt to demonstrate the accuracy that the LMC provides (see Table~\ref{table: Randomly selected data from five second scan}).
 
 It is interesting to note that the longer the scan has progressed, the more varied the readings become. This is attributed to the instability that is associated with an unsupported hand being held in mid-air for any given period of time.
 
@@ -98,8 +99,8 @@ Upon further evaluation, with the tolerance range at a maximum of 5mm, the accep
 As with any authentication system, one needs to take into consideration human error or inconsistency during the scanning process. To better illustrate the thought process prior to the formulation of the Algorithm \ref{algorithm: Recursive algorithm to find possible vector combinations}, consider the following example:
 
 \begin{enumerate}[label=\roman*.]
-    \item User A enrols with the transformed hand geometry vector of {50, 60, 70, 80, 90};
-    \item When the user A attempts to authenticate thereafter, his/her hand is not scanned identically due to various factors and the transformed hand geometry vector produced this time is {52, 59, 74, 81, 90}
+    \item User A enrols with the transformed hand geometry vector of \textit{50, 60, 70, 80, 90};
+    \item When the user A attempts to authenticate thereafter, his/her hand is not scanned identically due to various factors and the transformed hand geometry vector produced this time is \textit{52, 59, 74, 81, 90}
     \item Due to the SHA-256 hashing applied to the transformed geometry prior to storage, the match to the value stored within stego-image 2 fails, even though user A has provided the correct PIN.
     \item In order to provide greater match accuracy, an algorithm was formulated in order to compensate for fault tolerance during scans.
     \item As seen in Figure \ref{fig:Comparative vector tolerance}, the fault tolerance was variable for a range of 5 for each vector value.
@@ -157,8 +158,9 @@ The above-mentioned process is illustrated below in Algorithm~\ref{algorithm: Re
      
      return $result$ = \textbf{VectorCombinationsCheck($transformedVector$)}
      
-     \label{algorithm: Recursive algorithm to find possible vector combinations}
      \caption{Recursive algorithm to find possible vector combinations}
+     \label{algorithm: Recursive algorithm to find possible vector combinations}
+     
 \end{algorithm}
 
 This approach attempts to decrease the false-positive match rates. 
