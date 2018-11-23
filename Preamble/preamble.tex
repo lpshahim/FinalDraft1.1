@@ -57,7 +57,6 @@
 \RequirePackage[labelsep=space,tableposition=top]{caption}
 \renewcommand{\figurename}{Fig.} %to support older versions of captions.sty
 
-
 % *************************** Graphics and figures *****************************
 
 %\usepackage{rotating}
@@ -116,8 +115,8 @@
 
 % If you would like to use biblatex for your reference management, as opposed to the default `natbibpackage` pass the option `custombib` in the document class. Comment out the previous line to make sure you don't load the natbib package. Uncomment the following lines and specify the location of references.bib file
 
-%\RequirePackage[backend=biber, style=numeric-comp, citestyle=numeric, sorting=nty, natbib=true]{biblatex}
-%\bibliography{References/references} %Location of references.bib only for biblatex
+% \RequirePackage[backend=biber, style=numeric-comp, citestyle=numeric, sorting=nty, natbib=true]{biblatex}
+% \bibliography{References/references} %Location of references.bib only for biblatex
 
 \fi
 
@@ -154,7 +153,7 @@
 % The default value of both \appendixtocname and \appendixpagename is `Appendices'. These names can all be changed via:
 
 \renewcommand{\appendixtocname}{List of appendices}
-\renewcommand{\appendixname}{Appndx}
+\renewcommand{\appendixname}{Appendix}
 
 % *********************** Configure Draft Mode **********************************
 
@@ -209,3 +208,7 @@
 \usepackage{multirow}
 
 \usepackage{svg}
+
+\usepackage{csquotes}% Recommended
+
+\usepackage{natbib}

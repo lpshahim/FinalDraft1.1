@@ -261,7 +261,6 @@ supported!}
 \renewcommand{\contentsname}{Table of contents}
 \renewcommand{\listfigurename}{List of figures}
 \renewcommand{\listtablename}{List of tables}
-\renewcommand{\listalgorithmcfname}{List of algorithms}
 
 % Hides Contents appearing from TOC, but adds it to bookmarks
 \let\temptableofcontents\tableofcontents
@@ -1117,7 +1116,6 @@ wish to left align your text}
   \thispagestyle{empty}
 \fi
 }
-
 
 % ******************** To compute empty space in title page *******************
 % Boxes below are used to space different contents on the title page
